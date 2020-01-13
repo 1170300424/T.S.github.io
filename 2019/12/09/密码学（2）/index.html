@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="天水的小站www">
+  <meta name="author" content="天浮于水">
+  <meta name="keywords" content="">
+  <title>密码学（2） ~ 天浮于水w</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>天浮于水w</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/2.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 十二月 9日 2019, 9:43 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    655 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      2 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="第三章-对称密钥加密及为随机性"><a href="#第三章-对称密钥加密及为随机性" class="headerlink" title="第三章 对称密钥加密及为随机性"></a>第三章 对称密钥加密及为随机性</h2><h3 id="3-1密码学的计算方法"><a href="#3-1密码学的计算方法" class="headerlink" title="3.1密码学的计算方法"></a>3.1密码学的计算方法</h3><h4 id="信息理论安全与计算安全"><a href="#信息理论安全与计算安全" class="headerlink" title="信息理论安全与计算安全"></a>信息理论安全与计算安全</h4><ul>
+<li>信息理论安全：完善保密加密</li>
+<li>计算安全：使用具体方法和渐进方法来定义：<ul>
+<li>具体方法：如果每个运行时间最多为$t$的敌手以最多为$\varepsilon$的概率成功公婆该方案，则称这个方案为$(t,\varepsilon)$安全</li>
+<li>渐进方法：如果每个PPT（多项式时间）敌手以可忽略的概率成功攻破一个方案，那么该方案是安全的<ul>
+<li>注：在任何加密方案中，密钥空间必须足够大，以至于敌手不能变量，或者说，密钥空间的时间规模必须为安全参数的超多项式</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="有效的算法与可忽略的成功概率"><a href="#有效的算法与可忽略的成功概率" class="headerlink" title="有效的算法与可忽略的成功概率"></a>有效的算法与可忽略的成功概率</h4><ul>
+<li><strong>有效计算</strong>：指能够在“概率多项式时间”（PPT）内执行的计算</li>
+<li><strong>可忽略的成功概率</strong>：如果对于每一个多项式$p(.)$，存在一个$N$，使得所有的整数$n&gt;N$，都满足$f(n)&lt;1/p(n)$，则函数$f$是可忽略的</li>
+</ul>
+<h4 id="如何证明某个密码构造是安全的"><a href="#如何证明某个密码构造是安全的" class="headerlink" title="如何证明某个密码构造是安全的"></a>如何证明某个密码构造是安全的</h4><ol>
+<li>指定PPT敌手$A$攻击，并将成功的概率表示为$\varepsilon(n)$</li>
+<li>构造一个叫做”规约“的有效算法$A~’$（区分器？）,该算法将敌手$A$作为子程序来使用，试图解决难题$X$。<img src="%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%882%EF%BC%89.assets/1571837250776.png" srcset="/img/loading.gif" alt="1571837250776"></li>
+<li>如果能成功攻破，那么说明该区分器可以区分这个加密算法所使用的伪随机生成器</li>
+<li>但是根据伪随机生成器的定义，不可被区分</li>
+<li>所以矛盾，证明该算法安全</li>
+</ol>
+<h3 id="3-2-定义计算安全的加密"><a href="#3-2-定义计算安全的加密" class="headerlink" title="3.2 定义计算安全的加密"></a>3.2 定义计算安全的加密</h3><h4 id="窃听者存在情况下的不可区分性"><a href="#窃听者存在情况下的不可区分性" class="headerlink" title="窃听者存在情况下的不可区分性"></a>窃听者存在情况下的不可区分性</h4><p>​    窃听者不可区分实验$PrivK^{eav}_{A,\Pi}(n)$:</p>
+<ul>
+<li>给定输入$1^n$给敌手$A$，$A$输出一对长度相等的消息$m_0$,$m_1$。</li>
+<li>运行$Gen(1^n)$生成以个密钥k，选择一个随机比特$b$，$b∈{0,1}$。计算出密文$c=Enc_k(m_b)$，并且给$A$。把$c$叫做挑战密文。</li>
+<li>$A$输出一个比特$b’$</li>
+<li>如果$b=b’$输出1，反之输出0.</li>
+</ul>
+<h5 id="定义：如果对于所有的概率多项式事件敌手-A-存在一个可忽略函数-negl-使得：-Pr-PrivK-eav-A-Pi-lt-1-2-negl-n-则一个对称密钥加密方案-Pi-Gen-Enc-Dec-具备在窃听者存在的情况下不可区分的加密。"><a href="#定义：如果对于所有的概率多项式事件敌手-A-存在一个可忽略函数-negl-使得：-Pr-PrivK-eav-A-Pi-lt-1-2-negl-n-则一个对称密钥加密方案-Pi-Gen-Enc-Dec-具备在窃听者存在的情况下不可区分的加密。" class="headerlink" title="定义：如果对于所有的概率多项式事件敌手$A$,存在一个可忽略函数$negl$使得：$Pr[PrivK^{eav}_{A,\Pi}&lt;= 1/2 +negl(n)$,则一个对称密钥加密方案$\Pi=(Gen,Enc,Dec)$具备在窃听者存在的情况下不可区分的加密。"></a>定义：如果对于所有的概率多项式事件敌手$A$,存在一个可忽略函数$negl$使得：$Pr[PrivK^{eav}_{A,\Pi}&lt;= 1/2 +negl(n)$,则一个对称密钥加密方案$\Pi=(Gen,Enc,Dec)$具备在窃听者存在的情况下不可区分的加密。</h5><h5 id="等价公式：-Pr-output-PrivK-eav-A-Pi-n-0-1-Pr-output-PrivK-eav-A-Pi-n-1-1-lt-negl-n"><a href="#等价公式：-Pr-output-PrivK-eav-A-Pi-n-0-1-Pr-output-PrivK-eav-A-Pi-n-1-1-lt-negl-n" class="headerlink" title="等价公式：$|Pr[output(PrivK^{eav}{A,\Pi}(n,0))=1]-Pr[output(PrivK^{eav}{A,\Pi}(n,1))=1]| &lt;= negl(n)$"></a>等价公式：$|Pr[output(PrivK^{eav}<em>{A,\Pi}(n,0))=1]-Pr[output(PrivK^{eav}</em>{A,\Pi}(n,1))=1]| &lt;= negl(n)$</h5>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "密码学（2）&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
