@@ -4,19 +4,6 @@
   
   
   <entry>
-    <title>密码学（4）</title>
-    <link href="undefined2019/12/09/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%884%EF%BC%89/"/>
-    <url>2019/12/09/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%884%EF%BC%89/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>密码学（3）</title>
     <link href="undefined2019/12/09/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89/"/>
     <url>2019/12/09/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89/</url>
@@ -61,19 +48,6 @@
     <url>2019/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/</url>
     
     <content type="html"><![CDATA[<h1 id="计算机网络-1"><a href="#计算机网络-1" class="headerlink" title="计算机网络 1"></a>计算机网络 1</h1><h2 id="第一章-计算机网络和因特网"><a href="#第一章-计算机网络和因特网" class="headerlink" title="第一章 计算机网络和因特网"></a>第一章 计算机网络和因特网</h2><p><strong>计算机网络的定义：</strong>计算机网络是<strong>互联</strong>的，<strong>自治</strong>的计算机集合</p><ul><li>自治：无主从关系</li><li>互联：互联互通</li><li>计算机网络是一种<strong>通信网络</strong></li></ul><p>主机通过<strong>交换网络</strong>互连</p><p><strong>ISP</strong>：因特网服务提供商</p><p><strong>网络协议（协议）</strong>：是为了进行网络中数据交换而建立的规则、标准或约定。它规定了通信实体之间所交换的消息的<strong>格式</strong>、<strong>意义</strong>、<strong>顺序</strong>以及针对收到信息或发生的事件所采取的动作。</p><ul><li>三要素：<ul><li>语法：<em>数据与控制信息的结构或格式；信号电平。</em></li><li>语义：<em>要放发出何种控制信息、完成何种动作、做出何种响应；差错控制。</em></li><li>时序：<em>事件顺序；速度匹配。</em></li></ul></li><li>协议规范了网络中所有信息的发送和接收过程</li></ul><p><strong>计算机网络结构</strong>：</p><ul><li>网络边缘<ul><li>主机（端系统）</li><li>客户/服务器（C/S）应用模型</li><li>对等（P2P）应用模型<ul><li><em>在对等者之间分配任务和工作负载的分布式应用架构</em></li><li><em>网络的参与者共享他们所拥有的一部分硬件资源、这些资源通过网络提供服务和内容，可被其他节点直接访问二无需经过中间实体。</em></li><li><em>既是Server，也是Client。</em></li></ul></li></ul></li><li>接入网络，物理介质:<br>- </li><li>网络核心（核心网络）</li></ul>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>天水</title>
-    <link href="undefined2019/12/09/hello-world/"/>
-    <url>2019/12/09/hello-world/</url>
-    
-    <content type="html"><![CDATA[<h5 id="b站：鸡汁的天水菌w"><a href="#b站：鸡汁的天水菌w" class="headerlink" title="b站：鸡汁的天水菌w"></a>b站：鸡汁的天水菌w</h5><h5 id="知乎：醉后不知天在水"><a href="#知乎：醉后不知天在水" class="headerlink" title="知乎：醉后不知天在水"></a>知乎：醉后不知天在水</h5><h5 id="全民K歌：天水君w"><a href="#全民K歌：天水君w" class="headerlink" title="全民K歌：天水君w"></a>全民K歌：天水君w</h5><h3 id="我也不知道我在干什么qaq"><a href="#我也不知道我在干什么qaq" class="headerlink" title="我也不知道我在干什么qaq"></a>我也不知道我在干什么qaq</h3><h2 id="！大概是瞎试吧"><a href="#！大概是瞎试吧" class="headerlink" title="！大概是瞎试吧"></a>！大概是瞎试吧</h2><h6 id="所以说"><a href="#所以说" class="headerlink" title="所以说"></a>所以说</h6><h2 id="昨天买的花花真好看啊啊啊啊"><a href="#昨天买的花花真好看啊啊啊啊" class="headerlink" title="昨天买的花花真好看啊啊啊啊"></a>昨天买的花花真好看啊啊啊啊</h2><h6 id="什么鬼233333"><a href="#什么鬼233333" class="headerlink" title="什么鬼233333"></a>什么鬼233333</h6><h1 id="ctrl-1"><a href="#ctrl-1" class="headerlink" title="ctrl+1"></a>ctrl+1</h1><h2 id="ctrl-2"><a href="#ctrl-2" class="headerlink" title="ctrl+2"></a>ctrl+2</h2><h3 id="ctrl-3"><a href="#ctrl-3" class="headerlink" title="ctrl+3"></a>ctrl+3</h3><h4 id="ctrl-4"><a href="#ctrl-4" class="headerlink" title="ctrl+4"></a>ctrl+4</h4><h5 id="ctrl-5"><a href="#ctrl-5" class="headerlink" title="ctrl+5"></a>ctrl+5</h5><h6 id="ctrl-6"><a href="#ctrl-6" class="headerlink" title="ctrl+6"></a>ctrl+6</h6><ul><li>-和空格</li></ul><blockquote><p>引用是&gt; 加空格</p></blockquote><center>居中了吗？？？</center><p>真的居中了欸！！！</p><p>斜体：<em>成功了吗！是在两边打星号来着</em></p><p>加粗：<strong>在两边打两个星号23333太秀了</strong></p><p><u>下划线是u标签</u></p><p><u>还可以ctrl+u</u></p><ul><li>[ ]</li><li>[x]</li></ul><div class="table-container"><table><thead><tr><th>ctrl+t 是表格</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table></div><p><a href="http://www.baidu.com" target="_blank" rel="noopener">喵喵喵</a></p>]]></content>
     
     
     
