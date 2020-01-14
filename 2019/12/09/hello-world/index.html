@@ -178,6 +178,7 @@
 <li>[ ]</li>
 <li>[x]</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -186,11 +187,7 @@
 <th></th>
 </tr>
 </thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
+<tbody>
 <tr>
 <td></td>
 <td></td>
@@ -201,7 +198,13 @@
 <td></td>
 <td></td>
 </tr>
-</tbody></table>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><a href="http://www.baidu.com" target="_blank" rel="noopener">喵喵喵</a></p>
 
             <hr>
@@ -416,6 +419,32 @@
   </script>
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
 
 
 

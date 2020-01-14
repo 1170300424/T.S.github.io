@@ -346,7 +346,7 @@ ISP：因特网服务提供商
 
 
 
-接入网络，物理介质:
+接入网络，物理介质:- 
 网络核心（核心网络）
 
 </div>
@@ -394,7 +394,10 @@ ISP：因特网服务提供商
 
 
 
+
 ctrl+t 是表格
+
+
 
 
 
@@ -610,6 +613,32 @@ ctrl+t 是表格
   </script>
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
 
 
 

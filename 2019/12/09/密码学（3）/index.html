@@ -189,19 +189,19 @@
 <h3 id="5-2-Feistel网络"><a href="#5-2-Feistel网络" class="headerlink" title="5.2 Feistel网络"></a>5.2 Feistel网络</h3><p><img src="%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89.assets/1571902725499.png" srcset="/img/loading.gif" alt="1571902725499"></p>
 <p><img src="%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89.assets/1571902747488.png" srcset="/img/loading.gif" alt="1571902747488"></p>
 <h3 id="5-3-DES——数据加密标准"><a href="#5-3-DES——数据加密标准" class="headerlink" title="5.3 DES——数据加密标准"></a>5.3 DES——数据加密标准</h3><h3 id="5-4-增加分组密码的密钥长度"><a href="#5-4-增加分组密码的密钥长度" class="headerlink" title="5.4 增加分组密码的密钥长度"></a>5.4 增加分组密码的密钥长度</h3><h3 id="5-5-AES——高级加密标准"><a href="#5-5-AES——高级加密标准" class="headerlink" title="5.5 AES——高级加密标准"></a>5.5 AES——高级加密标准</h3><h3 id="5-6-差分密码盒线性密码分析简介"><a href="#5-6-差分密码盒线性密码分析简介" class="headerlink" title="5.6 差分密码盒线性密码分析简介"></a>5.6 差分密码盒线性密码分析简介</h3><h2 id="第六章-伪随机对象的理论构造"><a href="#第六章-伪随机对象的理论构造" class="headerlink" title="第六章 伪随机对象的理论构造"></a>第六章 伪随机对象的理论构造</h2><h3 id="6-1-单向函数"><a href="#6-1-单向函数" class="headerlink" title="6.1 单向函数"></a>6.1 单向函数</h3><h5 id="单向函数的定义："><a href="#单向函数的定义：" class="headerlink" title="单向函数的定义："></a>单向函数的定义：</h5><ul>
-<li>令$f:{0,1}^<em>\rightarrow{0,1}^</em>$为一个函数，$A$为任意算法，$n$为任意安全参数值：<ul>
+<li>令$f:\{0,1\}^<em>\rightarrow\{0,1\}^</em>$为一个函数，$A$为任意算法，$n$为任意安全参数值：<ul>
 <li>求逆实验$Invert_{A.f}(n)$<ul>
-<li>选择输入$x\leftarrow{0,1}^n$，计算$y:=f(x)$</li>
+<li>选择输入$x\leftarrow\{0,1\}^n$，计算$y:=f(x)$</li>
 <li>$1^n$和$y$值作为$A$的输入，输出为$x’$</li>
 <li>如果$f(x’)=y$，那么定义该实验输出为1，否则为0</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><strong>定义</strong>：如果一个函数$f:{0,1}^<em>\rightarrow{0,1}^</em>$满足以下两个条件，那么它是单向函数：<ul>
+<li><strong>定义</strong>：如果一个函数$f:\{0,1\}^<em>\rightarrow\{0,1\}^</em>$满足以下两个条件，那么它是单向函数：<ul>
 <li>（易于计算）存在多项式时间算法$M_f$来计算$f$,即对于所有的$x$，有$M_f(x)$</li>
 <li>（反向求逆十分困难）对任意概率多项式时间算法$A$，存在一个可忽略函数$negl$，满足：$Pr[Invert_{A,f}(n)=1]\leqslant negl(n)$<ul>
-<li>也可表示为：$Pr_{x\leftarrow{0,1}^n}[A(f(x))∈f^{-1}(f(x))] \leqslant negl(n) $</li>
+<li>也可表示为：$Pr_{x\leftarrow\{0,1\}^n}[A(f(x))∈f^{-1}(f(x))] \leqslant negl(n) $</li>
 </ul>
 </li>
 </ul>
@@ -420,6 +420,32 @@
   </script>
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
 
 
 

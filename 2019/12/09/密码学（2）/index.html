@@ -120,7 +120,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    655 字
+                    657 字
                   </span>&nbsp;
                 
 
@@ -186,11 +186,11 @@
 <h3 id="3-2-定义计算安全的加密"><a href="#3-2-定义计算安全的加密" class="headerlink" title="3.2 定义计算安全的加密"></a>3.2 定义计算安全的加密</h3><h4 id="窃听者存在情况下的不可区分性"><a href="#窃听者存在情况下的不可区分性" class="headerlink" title="窃听者存在情况下的不可区分性"></a>窃听者存在情况下的不可区分性</h4><p>​    窃听者不可区分实验$PrivK^{eav}_{A,\Pi}(n)$:</p>
 <ul>
 <li>给定输入$1^n$给敌手$A$，$A$输出一对长度相等的消息$m_0$,$m_1$。</li>
-<li>运行$Gen(1^n)$生成以个密钥k，选择一个随机比特$b$，$b∈{0,1}$。计算出密文$c=Enc_k(m_b)$，并且给$A$。把$c$叫做挑战密文。</li>
+<li>运行$Gen(1^n)$生成以个密钥k，选择一个随机比特$b$，$b∈\{0,1\}$。计算出密文$c=Enc_k(m_b)$，并且给$A$。把$c$叫做挑战密文。</li>
 <li>$A$输出一个比特$b’$</li>
 <li>如果$b=b’$输出1，反之输出0.</li>
 </ul>
-<h5 id="定义：如果对于所有的概率多项式事件敌手-A-存在一个可忽略函数-negl-使得：-Pr-PrivK-eav-A-Pi-lt-1-2-negl-n-则一个对称密钥加密方案-Pi-Gen-Enc-Dec-具备在窃听者存在的情况下不可区分的加密。"><a href="#定义：如果对于所有的概率多项式事件敌手-A-存在一个可忽略函数-negl-使得：-Pr-PrivK-eav-A-Pi-lt-1-2-negl-n-则一个对称密钥加密方案-Pi-Gen-Enc-Dec-具备在窃听者存在的情况下不可区分的加密。" class="headerlink" title="定义：如果对于所有的概率多项式事件敌手$A$,存在一个可忽略函数$negl$使得：$Pr[PrivK^{eav}_{A,\Pi}&lt;= 1/2 +negl(n)$,则一个对称密钥加密方案$\Pi=(Gen,Enc,Dec)$具备在窃听者存在的情况下不可区分的加密。"></a>定义：如果对于所有的概率多项式事件敌手$A$,存在一个可忽略函数$negl$使得：$Pr[PrivK^{eav}_{A,\Pi}&lt;= 1/2 +negl(n)$,则一个对称密钥加密方案$\Pi=(Gen,Enc,Dec)$具备在窃听者存在的情况下不可区分的加密。</h5><h5 id="等价公式：-Pr-output-PrivK-eav-A-Pi-n-0-1-Pr-output-PrivK-eav-A-Pi-n-1-1-lt-negl-n"><a href="#等价公式：-Pr-output-PrivK-eav-A-Pi-n-0-1-Pr-output-PrivK-eav-A-Pi-n-1-1-lt-negl-n" class="headerlink" title="等价公式：$|Pr[output(PrivK^{eav}{A,\Pi}(n,0))=1]-Pr[output(PrivK^{eav}{A,\Pi}(n,1))=1]| &lt;= negl(n)$"></a>等价公式：$|Pr[output(PrivK^{eav}<em>{A,\Pi}(n,0))=1]-Pr[output(PrivK^{eav}</em>{A,\Pi}(n,1))=1]| &lt;= negl(n)$</h5>
+<h5 id="定义：如果对于所有的概率多项式事件敌手-A-存在一个可忽略函数-negl-使得：-Pr-PrivK-eav-A-Pi-lt-1-2-negl-n-则一个对称密钥加密方案-Pi-Gen-Enc-Dec-具备在窃听者存在的情况下不可区分的加密。"><a href="#定义：如果对于所有的概率多项式事件敌手-A-存在一个可忽略函数-negl-使得：-Pr-PrivK-eav-A-Pi-lt-1-2-negl-n-则一个对称密钥加密方案-Pi-Gen-Enc-Dec-具备在窃听者存在的情况下不可区分的加密。" class="headerlink" title="定义：如果对于所有的概率多项式事件敌手$A$,存在一个可忽略函数$negl$使得：$Pr[PrivK^{eav}_{A,\Pi}&lt;= 1/2 +negl(n)$,则一个对称密钥加密方案$\Pi=(Gen,Enc,Dec)$具备在窃听者存在的情况下不可区分的加密。"></a>定义：如果对于所有的概率多项式事件敌手$A$,存在一个可忽略函数$negl$使得：$Pr[PrivK^{eav}_{A,\Pi}&lt;= 1/2 +negl(n)$,则一个对称密钥加密方案$\Pi=(Gen,Enc,Dec)$具备在窃听者存在的情况下不可区分的加密。</h5><h5 id="等价公式：-Pr-output-PrivK-eav-A-Pi-n-0-1-Pr-output-PrivK-eav-A-Pi-n-1-1-lt-negl-n"><a href="#等价公式：-Pr-output-PrivK-eav-A-Pi-n-0-1-Pr-output-PrivK-eav-A-Pi-n-1-1-lt-negl-n" class="headerlink" title="等价公式：$|Pr[output(PrivK^{eav}_{A,\Pi}(n,0))=1]-Pr[output(PrivK^{eav}_{A,\Pi}(n,1))=1]| &lt;= negl(n)$"></a>等价公式：$|Pr[output(PrivK^{eav}_{A,\Pi}(n,0))=1]-Pr[output(PrivK^{eav}_{A,\Pi}(n,1))=1]| &lt;= negl(n)$</h5>
             <hr>
           </div>
           <br>
@@ -403,6 +403,32 @@
   </script>
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
 
 
 
