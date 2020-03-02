@@ -154,7 +154,7 @@
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <h2 id="第五章-伪随机置换（分组加密）的实际构建"><a href="#第五章-伪随机置换（分组加密）的实际构建" class="headerlink" title="第五章 伪随机置换（分组加密）的实际构建"></a>第五章 伪随机置换（分组加密）的实际构建</h2><h6 id="密码学第三次作业所需内容，密码学好难qaq，不想写作业。。。"><a href="#密码学第三次作业所需内容，密码学好难qaq，不想写作业。。。" class="headerlink" title="密码学第三次作业所需内容，密码学好难qaq，不想写作业。。。"></a>密码学第三次作业所需内容，密码学好难qaq，不想写作业。。。</h6><h3 id="5-1-代替——置换网络"><a href="#5-1-代替——置换网络" class="headerlink" title="5.1 代替——置换网络"></a>5.1 代替——置换网络</h3><p><strong>S盒</strong>（替换盒）：对称密钥加密算法执行替换计算的基本结构。在块密码中，通常被用于模糊密钥与密文之间的关系（香农的混淆理论）</p>
-<h6 id="通常，S-Box接受特定数量的输入比特-m-，并将其转换为特定数量的输出比特-n-，其中-n-不一定等于-m-。一个-m-n-的S-Box可以通过包含-2-m-条目，每条目-n-比特的查找表实现。DES和AES的S盒是固定的，也有一些加密算法的S盒是基于密钥动态生成的，比如Blowfish和双鱼算法。"><a href="#通常，S-Box接受特定数量的输入比特-m-，并将其转换为特定数量的输出比特-n-，其中-n-不一定等于-m-。一个-m-n-的S-Box可以通过包含-2-m-条目，每条目-n-比特的查找表实现。DES和AES的S盒是固定的，也有一些加密算法的S盒是基于密钥动态生成的，比如Blowfish和双鱼算法。" class="headerlink" title="通常，S-Box接受特定数量的输入比特$m$，并将其转换为特定数量的输出比特$n$，其中$n$不一定等于$m$。一个$m*n$的S-Box可以通过包含$2^m$条目，每条目$n$比特的查找表实现。DES和AES的S盒是固定的，也有一些加密算法的S盒是基于密钥动态生成的，比如Blowfish和双鱼算法。"></a>通常，S-Box接受特定数量的输入比特$m$，并将其转换为特定数量的输出比特$n$，其中$n$不一定等于$m$。一个$m*n$的S-Box可以通过包含$2^m$条目，每条目$n$比特的查找表实现。DES和AES的S盒是固定的，也有一些加密算法的S盒是基于密钥动态生成的，比如Blowfish和双鱼算法。</h6><p><img src="%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89.assets/1571899988974.png" srcset="/img/loading.gif" alt="1**571899988974"></p>
+<h6 id="通常，S-Box接受特定数量的输入比特-m-，并将其转换为特定数量的输出比特-n-，其中-n-不一定等于-m-。一个-m-n-的S-Box可以通过包含-2-m-条目，每条目-n-比特的查找表实现。DES和AES的S盒是固定的，也有一些加密算法的S盒是基于密钥动态生成的，比如Blowfish和双鱼算法。"><a href="#通常，S-Box接受特定数量的输入比特-m-，并将其转换为特定数量的输出比特-n-，其中-n-不一定等于-m-。一个-m-n-的S-Box可以通过包含-2-m-条目，每条目-n-比特的查找表实现。DES和AES的S盒是固定的，也有一些加密算法的S盒是基于密钥动态生成的，比如Blowfish和双鱼算法。" class="headerlink" title="通常，S-Box接受特定数量的输入比特$m$，并将其转换为特定数量的输出比特$n$，其中$n$不一定等于$m$。一个$m*n$的S-Box可以通过包含$2^m$条目，每条目$n$比特的查找表实现。DES和AES的S盒是固定的，也有一些加密算法的S盒是基于密钥动态生成的，比如Blowfish和双鱼算法。"></a>通常，S-Box接受特定数量的输入比特$m$，并将其转换为特定数量的输出比特$n$，其中$n$不一定等于$m$。一个$m*n$的S-Box可以通过包含$2^m$条目，每条目$n$比特的查找表实现。DES和AES的S盒是固定的，也有一些加密算法的S盒是基于密钥动态生成的，比如Blowfish和双鱼算法。</h6><p><img src="/2019/12/09/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89/1571899988974.png" srcset="/img/loading.gif" alt="1**571899988974"></p>
 <p><strong>P盒</strong>（置换盒）： 是一个透过置换和转置[替换盒（S-boxes）输入进行位元洗牌的方法，在转置的过程中保持一定程度的<a href="https://zh.wikipedia.org/wiki/混淆與擴散" target="_blank" rel="noopener">扩散</a>。 </p>
 <p>置换盒通常分为三类：</p>
 <ul>
@@ -164,8 +164,8 @@
 </ul>
 <p>其中只有平直性的置换盒是可逆的。</p>
 <p><strong>代替置换网络（SP）</strong>：</p>
-<p><img src="%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89.assets/1571901160997.png" srcset="/img/loading.gif" alt="1571901160997"></p>
-<p><img src="%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89.assets/1571901172667.png" srcset="/img/loading.gif" alt="1571901172667"></p>
+<p><img src="/2019/12/09/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89/1571901160997.png" srcset="/img/loading.gif" alt="1571901160997"></p>
+<p><img src="/2019/12/09/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89/1571901172667.png" srcset="/img/loading.gif" alt="1571901172667"></p>
 <p><strong>设计原则</strong>：</p>
 <ul>
 <li>S盒的可逆性：在代替置换网络中，S盒必须是可逆的（即必须是单射和满射函数），否则分组函数不能成为一个置换</li>
@@ -178,8 +178,8 @@
 <p><strong>代替置换网络的安全性</strong>：</p>
 <p><strong>对轮数较少的代替转换网络的攻击</strong>：</p>
 <p><strong>攻击三轮代替-置换网络</strong>：</p>
-<h3 id="5-2-Feistel网络"><a href="#5-2-Feistel网络" class="headerlink" title="5.2 Feistel网络"></a>5.2 Feistel网络</h3><p><img src="%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89.assets/1571902725499.png" srcset="/img/loading.gif" alt="1571902725499"></p>
-<p><img src="%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89.assets/1571902747488.png" srcset="/img/loading.gif" alt="1571902747488"></p>
+<h3 id="5-2-Feistel网络"><a href="#5-2-Feistel网络" class="headerlink" title="5.2 Feistel网络"></a>5.2 Feistel网络</h3><p><img src="/2019/12/09/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89/1571902725499.png" srcset="/img/loading.gif" alt="1571902725499"></p>
+<p><img src="/2019/12/09/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%883%EF%BC%89/1571902747488.png" srcset="/img/loading.gif" alt="1571902747488"></p>
 <h3 id="5-3-DES——数据加密标准"><a href="#5-3-DES——数据加密标准" class="headerlink" title="5.3 DES——数据加密标准"></a>5.3 DES——数据加密标准</h3><h3 id="5-4-增加分组密码的密钥长度"><a href="#5-4-增加分组密码的密钥长度" class="headerlink" title="5.4 增加分组密码的密钥长度"></a>5.4 增加分组密码的密钥长度</h3><h3 id="5-5-AES——高级加密标准"><a href="#5-5-AES——高级加密标准" class="headerlink" title="5.5 AES——高级加密标准"></a>5.5 AES——高级加密标准</h3><h3 id="5-6-差分密码盒线性密码分析简介"><a href="#5-6-差分密码盒线性密码分析简介" class="headerlink" title="5.6 差分密码盒线性密码分析简介"></a>5.6 差分密码盒线性密码分析简介</h3><h2 id="第六章-伪随机对象的理论构造"><a href="#第六章-伪随机对象的理论构造" class="headerlink" title="第六章 伪随机对象的理论构造"></a>第六章 伪随机对象的理论构造</h2><h3 id="6-1-单向函数"><a href="#6-1-单向函数" class="headerlink" title="6.1 单向函数"></a>6.1 单向函数</h3><h5 id="单向函数的定义："><a href="#单向函数的定义：" class="headerlink" title="单向函数的定义："></a>单向函数的定义：</h5><ul>
 <li>令$f:\{0,1\}^<em>\rightarrow\{0,1\}^</em>$为一个函数，$A$为任意算法，$n$为任意安全参数值：<ul>
 <li>求逆实验$Invert_{A.f}(n)$<ul>
