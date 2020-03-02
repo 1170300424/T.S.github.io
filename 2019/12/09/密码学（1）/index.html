@@ -195,16 +195,17 @@
 <p><em>密钥空间充分性原则：任何安全的加密方案必须拥有一个能够抵御穷举搜索的密钥空间</em></p>
 <p><strong>单字母替换（substitution）</strong>：一一映射</p>
 <p><strong>多字母移位加密（Vigenere）</strong>：如图</p>
-<p><img src="/2019/12/09/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%881%EF%BC%89/assets\%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%881%EF%BC%89.assets\1.png" srcset="/img/loading.gif" alt="1"></p>
+<p><img src="/img/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%881%EF%BC%89.assets/1.png" srcset="/img/loading.gif" alt></p>
 <h1 id="第二章-完善保密加密"><a href="#第二章-完善保密加密" class="headerlink" title="第二章 完善保密加密"></a>第二章 完善保密加密</h1><h2 id="2-1-完善保密加密"><a href="#2-1-完善保密加密" class="headerlink" title="2.1 完善保密加密"></a>2.1 完善保密加密</h2><p><strong>完善保密加密：</strong></p>
-<p><img src="/2019/12/09/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%881%EF%BC%89/assets/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%881%EF%BC%89.assets/image-20200302123938147.png" srcset="/img/loading.gif" alt="image-20200302123938147"></p>
+<p><img src="/img/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%881%EF%BC%89.assets/image-20200302123938147.png" srcset="/img/loading.gif" alt="image-20200302123938147"></p>
 <p><strong>完美不可区分性：</strong>密文不包含任何明文信息（密文空间的概率分布独立于明文？）</p>
-<p><img src="file:///C:/%5CUsers%5Cx%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571300059672.png" srcset="/img/loading.gif" alt="1571300059672"></p>
+<p><img src="/img/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%881%EF%BC%89.assets/image-20200302135646380.png" srcset="/img/loading.gif" alt="image-20200302135646380"></p>
 <p><strong>敌手不可区分性：</strong>敌手不能区分密文时来自哪个明文的加密</p>
-<p><img src="file:///C:/%5CUsers%5Cx%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571300128559.png" srcset="/img/loading.gif" alt="1571300128559"></p>
-<p>其中：<img src="file:///C:/%5CUsers%5Cx%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571300164844.png" srcset="/img/loading.gif" alt="1571300164844"></p>
-<h2 id="2-2-一次一密（Vernam加密）"><a href="#2-2-一次一密（Vernam加密）" class="headerlink" title="2.2 一次一密（Vernam加密）"></a>2.2 一次一密（Vernam加密）</h2><p><img src="file:///C:/%5CUsers%5Cx%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571300541390.png" srcset="/img/loading.gif" alt="1571300541390"></p>
-<h2 id="2-3-完善保密加密局限"><a href="#2-3-完善保密加密局限" class="headerlink" title="2.3 完善保密加密局限"></a>2.3 完善保密加密局限</h2><p><img src="file:///C:/%5CUsers%5Cx%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571578028672.png" srcset="/img/loading.gif" alt="1571578028672"></p>
+<p><img src="/img/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%881%EF%BC%89.assets/image-20200302135906974.png" srcset="/img/loading.gif" alt="image-20200302135906974"></p>
+<p>其中：</p>
+<p><img src="/img/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%881%EF%BC%89.assets/image-20200302135937398.png" srcset="/img/loading.gif" alt="image-20200302135937398"></p>
+<h2 id="2-2-一次一密（Vernam加密）"><a href="#2-2-一次一密（Vernam加密）" class="headerlink" title="2.2 一次一密（Vernam加密）"></a>2.2 一次一密（Vernam加密）</h2><p><img src="/img/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%881%EF%BC%89.assets/image-20200302135958699.png" srcset="/img/loading.gif" alt="image-20200302135958699"></p>
+<h2 id="2-3-完善保密加密局限"><a href="#2-3-完善保密加密局限" class="headerlink" title="2.3 完善保密加密局限"></a>2.3 完善保密加密局限</h2><p><img src="/img/%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%881%EF%BC%89.assets/image-20200302140015396.png" srcset="/img/loading.gif" alt="image-20200302140015396"></p>
 <h2 id="2-4-香农定理"><a href="#2-4-香农定理" class="headerlink" title="2.4 香农定理"></a>2.4 香农定理</h2><p> 定理：设加密方案 （Gen,Enc,Dec）的明文空间为<em>M</em>，且|<em>K</em>|=|<em>M</em>|=|<em>C</em>|，则当且仅当下列条件成立时，此方案是完善保密加密：</p>
 <ul>
 <li>由Gen产生的任意密钥<em>k</em>∈<em>K</em>的概率都是1/|<em>K</em>|。</li>
