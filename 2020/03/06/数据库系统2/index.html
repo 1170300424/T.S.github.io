@@ -120,7 +120,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.1k 字
+                    1.7k 字
                   </span>&nbsp;
                 
 
@@ -128,7 +128,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      6 分钟
                   </span>&nbsp;
                 
 
@@ -168,7 +168,10 @@
             <p>​        数据库系统2——关系数据库系统。</p>
 <a id="more"></a>
 <h2 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h2><h6 id="关系模型是由-E-F-Codd-于-1970-年提出的。"><a href="#关系模型是由-E-F-Codd-于-1970-年提出的。" class="headerlink" title="关系模型是由 E.F.Codd 于 1970 年提出的。"></a>关系模型是由 E.F.Codd 于 1970 年提出的。</h6><h4 id="关系模型的组成要素"><a href="#关系模型的组成要素" class="headerlink" title="关系模型的组成要素"></a>关系模型的组成要素</h4><h5 id="三个组成要素"><a href="#三个组成要素" class="headerlink" title="三个组成要素"></a>三个组成要素</h5><ul>
-<li>关系数据结构</li>
+<li>关系数据结构<ul>
+<li>建立在<strong>集合代数</strong>的基础上</li>
+</ul>
+</li>
 <li>完整性约束<ul>
 <li>实体完整性</li>
 <li>参照完整性</li>
@@ -213,11 +216,13 @@
 <li>一组具有相同数据类型的值的集合</li>
 </ul>
 </li>
-<li><p><strong>关系模式</strong> —— 大概相当于表头（…）</p>
+<li><p><strong>关系模式</strong> —— 大概相当于表头（并不）</p>
 <p>形式：$R(U,D,DOM,I,F)$</p>
 <p>简记为：$R(U)$，若 $U=\{A_1,A_2,…,A_n\}$，也可写为 $R(A_1,A_2,…,A_n)$，n 称为关系的目（或者度）。</p>
 </li>
-<li><p><strong>关系实例</strong>：关系模式在给定时刻的一个快照。</p>
+<li><p><strong>关系实例</strong>：关系模式在给定时刻的一个快照。时某一时刻现实世界状态的真实反映。</p>
+</li>
+<li><p><strong>关系数据库模式&amp;关系数据库实例</strong></p>
 </li>
 </ul>
 </li>
@@ -234,8 +239,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h4><h5 id="各种码的概念（…）"><a href="#各种码的概念（…）" class="headerlink" title="各种码的概念（…）"></a>各种码的概念（…）</h5><ul>
-<li><p><strong>超码</strong>：一个或多个属性的集合，这些属性的组合可以唯一标识一个元组的。</p>
+<h4 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h4><h5 id="各种码的概念"><a href="#各种码的概念" class="headerlink" title="各种码的概念"></a>各种码的概念</h5><ul>
+<li><p><strong>超码</strong>：一个或多个属性的集合，这些属性的组合可以<strong>唯一标识一个元组</strong>的。</p>
 </li>
 <li><p><strong>候选码</strong>：最小的超码，一个关系模式中可能不止一个候选码。</p>
 </li>
@@ -251,6 +256,7 @@
 <li><strong>参照完整性约束</strong>：如果关系$R_1$的外码$F_k$与关系$R_2$的主码$P_k$相对应，则$R_1$中的每一个元组的$F_k$值要等于$R_2$中某个元组的$P_k$值或者为空值。</li>
 <li><strong>用户定义的完整性约束</strong>：用户针对具体的应用程序定义的完整性约束条件。</li>
 </ul>
+<p>（语义完整性约束和函数依赖？）</p>
 <h5 id="DBMS对于完整性的支持"><a href="#DBMS对于完整性的支持" class="headerlink" title="DBMS对于完整性的支持"></a>DBMS对于完整性的支持</h5><ul>
 <li>实体完整性&amp;参照完整性是由DBMS系统字段支持的</li>
 <li>DBMS系统通常会提供以下机制：<ul>
@@ -271,11 +277,11 @@
 </ol>
 <h6 id="并、差、交运算需满足相容性"><a href="#并、差、交运算需满足相容性" class="headerlink" title="并、差、交运算需满足相容性"></a><em>并、差、交运算需满足相容性</em></h6><p><strong>关系代数基本运算</strong></p>
 <ul>
-<li><strong>并</strong>： $R\cap S = \{t | t \in R \and t\in S\}$，其中 $t$ 是元组。</li>
-<li><strong>差</strong>：$R-S = \{t \in R \and t\notin S\}$</li>
-<li><strong>笛卡尔积（积）</strong>：$R \times S = \{<a_1,a_2,...,a_n,b_1,...,b_m> | <a_1,a_2,...,a_n>\in R \and <b_1,...,b_m> \in S \}$</b_1,...,b_m></a_1,a_2,...,a_n></a_1,a_2,...,a_n,b_1,...,b_m></li>
-<li><strong>选择</strong>：$\sigma_{con}(R)=\{t | t\in R\and con(t)\}$<ul>
-<li>$con$为选择谓词，运算符优先次序为：$括号; \theta; \lnot ; \and; \or$ </li>
+<li><strong>并</strong>： $R\cup S = \{t | t \in R \wedge t\in S\}$，其中 $t$ 是元组。</li>
+<li><strong>差</strong>：$R-S = \{t \in R \wedge t\notin S\}$</li>
+<li><strong>笛卡尔积（积）</strong>：$R \times S = \{<a_1,a_2,...,a_n,b_1,...,b_m> | <a_1,a_2,...,a_n>\in R \wedge <b_1,...,b_m> \in S \}$</b_1,...,b_m></a_1,a_2,...,a_n></a_1,a_2,...,a_n,b_1,...,b_m></li>
+<li><strong>选择</strong>：$\sigma_{con}(R)=\{t | t\in R\wedge con(t)\}$<ul>
+<li>$con$为选择谓词，运算符优先次序为：$括号; \theta; \lnot ; \wedge; \vee$ </li>
 </ul>
 </li>
 <li><strong>投影</strong>：$\Pi_{A_1,A_2,…A_k}(R) = \{<t[A_1],t[A_2],...,t[A_k]> | t\in R\}$<ul>
@@ -284,18 +290,59 @@
 </t[A_1],t[A_2],...,t[A_k]></li>
 <li><strong>更名</strong>：$\rho_S (R)$ 或者 $\rho_{S(A_1,…,A_n)}(R)$</li>
 </ul>
-<p><strong>其他扩展运算</strong></p>
-<h6 id="扩展运算不增加关系代数的表达能力，但是可以简化常用查询。"><a href="#扩展运算不增加关系代数的表达能力，但是可以简化常用查询。" class="headerlink" title="扩展运算不增加关系代数的表达能力，但是可以简化常用查询。"></a>扩展运算不增加关系代数的表达能力，但是可以简化常用查询。</h6><ul>
-<li><strong>交</strong>：</li>
+<p><strong>附加运算</strong></p>
+<h6 id="附加运算不增加关系代数的表达能力，但是可以简化常用查询。"><a href="#附加运算不增加关系代数的表达能力，但是可以简化常用查询。" class="headerlink" title="附加运算不增加关系代数的表达能力，但是可以简化常用查询。"></a>附加运算不增加关系代数的表达能力，但是可以简化常用查询。</h6><ul>
+<li><strong>交</strong>：$R \cap  S = \{t |t\in R and t \in S\}$</li>
 <li><strong>连接</strong><ul>
-<li>$\theta$ <strong>连接</strong>：</li>
-<li><strong>等值连接</strong>：</li>
-<li><strong>自然连接</strong>：</li>
+<li>$\theta$ <strong>连接</strong>：大概是有连接条件的连接</li>
+<li><strong>等值连接</strong>：$\theta$ 为等号的$\theta$ 连接</li>
+<li><strong>自然连接</strong>（$\bowtie$）：要求进行笛卡尔积的两个关系在所有相同属性上的值一致</li>
 </ul>
 </li>
-<li><strong>除</strong>：</li>
+<li><strong>赋值</strong>：只能赋给临时关系变量，不能增加关系运算的表达能力</li>
+<li><strong>外连接</strong>：（左外连接&amp;右外连接&amp;全外连接）左外是以左边为准，没法匹配的用null填充右边属性。</li>
+<li><strong>除</strong>：$R \div S = \{t | t \in \Pi_z(R) \wedge \forall u \in S (tu \in R) \}$</li>
 </ul>
-<h5 id="关系演算——元组演算"><a href="#关系演算——元组演算" class="headerlink" title="关系演算——元组演算"></a>关系演算——元组演算</h5><h5 id="关系演算——域演算"><a href="#关系演算——域演算" class="headerlink" title="关系演算——域演算"></a>关系演算——域演算</h5>
+<p><strong>其他扩展运算</strong></p>
+<h6 id="可以实现不能有基本的关系代数运算来表达的查询"><a href="#可以实现不能有基本的关系代数运算来表达的查询" class="headerlink" title="可以实现不能有基本的关系代数运算来表达的查询"></a>可以实现不能有基本的关系代数运算来表达的查询</h6><ul>
+<li>广义投影：在投影中使用算术运算和字符</li>
+<li>聚集</li>
+</ul>
+<h5 id="关系演算——元组演算"><a href="#关系演算——元组演算" class="headerlink" title="关系演算——元组演算"></a>关系演算——元组演算</h5><h6 id="非过程化的查询语言，只需要描述所需信息而不需要给出获取过程"><a href="#非过程化的查询语言，只需要描述所需信息而不需要给出获取过程" class="headerlink" title="非过程化的查询语言，只需要描述所需信息而不需要给出获取过程"></a>非过程化的查询语言，只需要描述所需信息而不需要给出获取过程</h6><ul>
+<li><p>表达式：$\{t | P(T)\}$</p>
+<ul>
+<li>所有使得公式P为真的元组t的集合</li>
+</ul>
+</li>
+<li><p>公式P由原子公式构成</p>
+<ul>
+<li>$s \in R; s[x] \Theta u[y]; s[x] \Theta C.$</li>
+</ul>
+</li>
+</ul>
+<h5 id="关系演算——域演算"><a href="#关系演算——域演算" class="headerlink" title="关系演算——域演算"></a>关系演算——域演算</h5><h6 id="使用从属性域中取值的域变量，而不是整个元组的值"><a href="#使用从属性域中取值的域变量，而不是整个元组的值" class="headerlink" title="使用从属性域中取值的域变量，而不是整个元组的值"></a>使用从属性域中取值的域变量，而不是整个元组的值</h6><ul>
+<li>形式化定义：$\{<x_1,...,x_n>|P(x_1,…,x_n)\}$<ul>
+<li>其中$x_1,…,x_n$分别是域变量</li>
+<li>P由原子公式构成</li>
+<li>查询结果时是有包含$<x_1,...,x_n>$且使$P(x_1,…,x_n)$为真的元组</x_1,...,x_n></li>
+</ul>
+</x_1,...,x_n></li>
+</ul>
+<h5 id="关系运算的安全性"><a href="#关系运算的安全性" class="headerlink" title="关系运算的安全性"></a>关系运算的安全性</h5><ul>
+<li>安全关系运算系统：如果一个关系运算系统不产生不限关系和无穷验证则是安全的</li>
+<li>关系代数系统是安全的</li>
+<li>元组演算和域演算是不安全的<ul>
+<li>引入元组关系公式的域的概念，对关系演算进行限制</li>
+</ul>
+</li>
+</ul>
+<h5 id="三者等价性"><a href="#三者等价性" class="headerlink" title="三者等价性"></a>三者等价性</h5><p>下述三者等价：</p>
+<ul>
+<li>基本关系代数</li>
+<li>限制在安全范围内的元组关系演算</li>
+<li>限制在安全范围内的域关系演算</li>
+</ul>
+<h6 id="本章重点：关系、属性、元组、码等关系数据结构基本概念；关系代数；完整性约束（实体完整性、参照完整性、用户定义完整性）"><a href="#本章重点：关系、属性、元组、码等关系数据结构基本概念；关系代数；完整性约束（实体完整性、参照完整性、用户定义完整性）" class="headerlink" title="本章重点：关系、属性、元组、码等关系数据结构基本概念；关系代数；完整性约束（实体完整性、参照完整性、用户定义完整性）"></a>本章重点：关系、属性、元组、码等关系数据结构基本概念；关系代数；完整性约束（实体完整性、参照完整性、用户定义完整性）</h6>
             <hr>
           </div>
           <br>
