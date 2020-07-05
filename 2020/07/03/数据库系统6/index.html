@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="天水的小站www">
+  <meta name="author" content="天浮于水">
+  <meta name="keywords" content="">
+  <title>数据库系统6 · 天浮于水w</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>天浮于水w</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页菌</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链们</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于天水w</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/shu6.jpg')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 七月 3日 2020, 8:28 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.9k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      7 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>​        数据库系统6——查询处理&amp;查询优化。</p>
+<a id="more"></a>
+<h2 id="查询处理"><a href="#查询处理" class="headerlink" title="查询处理"></a>查询处理</h2><h4 id="关系代数操作算法"><a href="#关系代数操作算法" class="headerlink" title="关系代数操作算法"></a>关系代数操作算法</h4><h5 id="选择操作算法"><a href="#选择操作算法" class="headerlink" title="选择操作算法"></a>选择操作算法</h5><ul>
+<li>简单选择操作算法：<ul>
+<li>线性搜索算法<ul>
+<li>顺序读取被操作关系的每个元组</li>
+<li>测试该元组是否满足条件，满足则输出</li>
+</ul>
+</li>
+<li>二元搜索算法<ul>
+<li>条件：按该属性排序</li>
+<li>$O(log(N))$</li>
+</ul>
+</li>
+<li>主索引或者HASH搜索<ul>
+<li>条件：主索引属性或者HASH属性上的相等比较</li>
+</ul>
+</li>
+<li>使用主索引查找满足条件的元组<ul>
+<li>条件：主索引属性上的非相等比较</li>
+</ul>
+</li>
+<li>使用聚集索引查找满足条件的元组<ul>
+<li>具有聚集索引的非键属性上的相等比较</li>
+</ul>
+</li>
+<li>B+树和B树索引搜索算法</li>
+<li>合取选择算法</li>
+<li>使用复合索引的合取选择算法</li>
+</ul>
+</li>
+</ul>
+<h5 id="投影操作算法"><a href="#投影操作算法" class="headerlink" title="投影操作算法"></a>投影操作算法</h5><ul>
+<li>若投影结果中包含码：存取R的所有元组一次即可完成</li>
+<li>若不包含：需要删除重复元组。可利用排序算法实现投影操作</li>
+<li><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F6.assets/image-20200703221314660.png" srcset="/img/loading.gif" alt="image-20200703221314660" style="zoom:67%;"></li>
+</ul>
+<h5 id="连接操作算法"><a href="#连接操作算法" class="headerlink" title="连接操作算法"></a>连接操作算法</h5><p>$\theta-$连接操作算法：</p>
+<p><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F6.assets/image-20200703222400631.png" srcset="/img/loading.gif" alt="image-20200703222400631" style="zoom:67%;"></p>
+<p>等值连接操作算法：（这里讨论自然连接）</p>
+<ul>
+<li><p>循环嵌套链接（NLJ）</p>
+<p><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F6.assets/image-20200703222903512.png" srcset="/img/loading.gif" alt="image-20200703222903512" style="zoom:50%;"></p>
+<ul>
+<li>优化：一次读入尽可能多的元组；使用尽可能多的内存块存放外层循环关系的元组；较小的作为外层。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>排序合并连接（Sort-Merge-Join）</p>
+<p>​    <img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F6.assets/image-20200703223933668.png" srcset="/img/loading.gif" alt="image-20200703223933668" style="zoom: 50%;"></p>
+</li>
+</ul>
+<ul>
+<li><p>Hash-连接（Hash-Join）</p>
+<p>​    <img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F6.assets/image-20200703224220132.png" srcset="/img/loading.gif" alt="image-20200703224220132" style="zoom:50%;"></p>
+</li>
+</ul>
+<h5 id="集合操作算法"><a href="#集合操作算法" class="headerlink" title="集合操作算法"></a>集合操作算法</h5><h6 id="输入关系约束：具有相同的属性集合且属性的排列顺序也相同"><a href="#输入关系约束：具有相同的属性集合且属性的排列顺序也相同" class="headerlink" title="输入关系约束：具有相同的属性集合且属性的排列顺序也相同"></a>输入关系约束：具有相同的属性集合且属性的排列顺序也相同</h6><p>方法：利用排序算法在相同的键属性上排序两个操作关系，然后扫描排序后的关系，完成集合操作。</p>
+<h6 id="本章重点：掌握个操作的实现算法；掌握关系代数表达式的查询处理方法"><a href="#本章重点：掌握个操作的实现算法；掌握关系代数表达式的查询处理方法" class="headerlink" title="本章重点：掌握个操作的实现算法；掌握关系代数表达式的查询处理方法"></a>本章重点：掌握个操作的实现算法；掌握关系代数表达式的查询处理方法</h6><h2 id="查询优化"><a href="#查询优化" class="headerlink" title="查询优化"></a>查询优化</h2><h6 id="使用不同的策略处理查询会得到不同的时间开销，需要选择优化的查询处理策略，以减少处理时间，提高系统的处理能力。"><a href="#使用不同的策略处理查询会得到不同的时间开销，需要选择优化的查询处理策略，以减少处理时间，提高系统的处理能力。" class="headerlink" title="使用不同的策略处理查询会得到不同的时间开销，需要选择优化的查询处理策略，以减少处理时间，提高系统的处理能力。"></a>使用不同的策略处理查询会得到不同的时间开销，需要选择优化的查询处理策略，以减少处理时间，提高系统的处理能力。</h6><h5 id="关系表达式的等价转换规则"><a href="#关系表达式的等价转换规则" class="headerlink" title="关系表达式的等价转换规则"></a>关系表达式的等价转换规则</h5><p>关系代数等价转换规则：</p>
+<ul>
+<li>选择串接率<ul>
+<li>$\sigma_{c1 and…and cn }(E) \equiv \sigma_{c1}(\sigma_{c2}(…(\sigma_{cn}(E))))$</li>
+</ul>
+</li>
+<li>选择交换律<ul>
+<li>$\sigma_{c1}(\sigma_{c2}(E)) \equiv \sigma_{c2}(\sigma_{c1}(E))$</li>
+</ul>
+</li>
+<li>投影交换律<ul>
+<li>$\Pi_{L1}(\Pi_{L2}(…(\Pi_{Ln}(E))…)) \equiv \Pi_{L1}(E)$</li>
+</ul>
+</li>
+<li>选择投影交换律<ul>
+<li>$\Pi_{L}(\sigma_C(E)) \equiv \sigma_C(\Pi_{L}(E)) $ —— C中只涉及L中属性</li>
+<li>$\Pi_{L}(\sigma_C(E)) \equiv \Pi_{L}(\sigma_C(\Pi_{L,B1,B2,…,Bm}(E)))$ ——还涉及其他属性</li>
+</ul>
+</li>
+<li>连接和笛卡尔积的交换律</li>
+<li>集合操作的交换律</li>
+<li>连接、笛卡尔积和集合操作的结合律</li>
+<li>选择、连接和笛卡尔乘积的分配律</li>
+<li>投影、连接和笛卡尔乘积的分配律</li>
+<li>选择与集合操作的分配律</li>
+<li>投影与集合操作的分配律</li>
+<li>其他</li>
+</ul>
+<h5 id="表达式结果大小的估计"><a href="#表达式结果大小的估计" class="headerlink" title="表达式结果大小的估计"></a>表达式结果大小的估计</h5><h6 id="一个操作的代价依赖于它的输入大小和其他统计信息"><a href="#一个操作的代价依赖于它的输入大小和其他统计信息" class="headerlink" title="一个操作的代价依赖于它的输入大小和其他统计信息"></a>一个操作的代价依赖于它的输入大小和其他统计信息</h6><ul>
+<li><p>数据库系统的统计信息</p>
+<ul>
+<li>$n_r$：关系r的元组数</li>
+<li>$b_r$：包含关系r中元组的磁盘块数</li>
+<li>$l_r$：关系r中每个元组的字节数</li>
+<li>$f_r$：关系r的块因子（一个磁盘块中可以容纳r中元组的个数）</li>
+<li>$V(A,r)$：关系r中属性A中出现的非重复值的个数</li>
+</ul>
+</li>
+<li><p>如果假设关系r在物理上存储于一个文件中，则 $b_r = \lceil n_r/ f_r\rceil$</p>
+</li>
+<li><p>当r中A属性上的取值分布是均匀的，运算结果的大小估计如下：</p>
+<ul>
+<li><p>投影$\Pi_A(r)$ ：$V(A,r)$</p>
+</li>
+<li><p>选择$\sigma_{A=a}(R)$： $n_r/V(A,r)$</p>
+</li>
+<li><p>$\sigma_{A \leq v}(R)$： </p>
+<ul>
+<li>$if v &lt; min(A,r)$：0</li>
+<li>$if v &gt; max(A,r)：n_r$</li>
+<li>else：$n_r \times [v-min(A,r)]/[max[A,r]-min(A,r)]$ </li>
+</ul>
+</li>
+<li><p>合取$\sigma_{\theta_1 \wedge…\wedge \theta_k}(R)$： $n_r \times分别的选择估计结果相乘/ n_r^k$</p>
+</li>
+<li><p>析取：$(1-(1-计算结果_1/n_r)\times……)\times n_r$</p>
+</li>
+<li><p>取反$\sigma_{\urcorner\theta}(r)$：无空值——$n_r-s_\theta$</p>
+<p>​                        右空值——$n_r-n_{null}-s_\theta$</p>
+</li>
+<li><p>笛卡尔积：元素个数之积，每个元组占$l_r+l_s$个字节</p>
+</li>
+<li><p>自然连接：RS交集为空：类似笛卡尔积的结果</p>
+<p>​                   RS交集为R的码：小于等于$n_s$</p>
+<p>​                   交集为S中参照R的外码：$n_s$</p>
+<p>​                   不是任何的码：$min(n_r\times n_s/V(A,s),n_s\times n_r/V(A,r))$</p>
+</li>
+<li><p>聚集：$V(A,r)$</p>
+</li>
+<li><p>集合运算：类似于合取、析取、取反的估计方法</p>
+</li>
+<li><p>外连接（结果上界）：</p>
+<ul>
+<li>r左外连接s：自然连接估值+$n_r$</li>
+<li>r右外连接s：自然连接估值+$n_s$</li>
+<li>r全外连接s：自然连接估值+$(n_r+n_s)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>当r中A属性上的取值分布不均匀的，可以采用直方图等统计方法统计方法进行结果大小估计。</p>
+</li>
+</ul>
+<h5 id="启发式关系代数优化算法"><a href="#启发式关系代数优化算法" class="headerlink" title="启发式关系代数优化算法"></a>启发式关系代数优化算法</h5><ul>
+<li><p>启发式代数优化规则</p>
+<h6 id="给定一个关系代数表达式，可以应用一组启发式规则对其进行等价变换，产生一个具有较高效率的等价表达式。（不能保证一定产生最优化等价表达式）"><a href="#给定一个关系代数表达式，可以应用一组启发式规则对其进行等价变换，产生一个具有较高效率的等价表达式。（不能保证一定产生最优化等价表达式）" class="headerlink" title="给定一个关系代数表达式，可以应用一组启发式规则对其进行等价变换，产生一个具有较高效率的等价表达式。（不能保证一定产生最优化等价表达式）"></a>给定一个关系代数表达式，可以应用一组启发式规则对其进行等价变换，产生一个具有较高效率的等价表达式。（不能保证一定产生最优化等价表达式）</h6><ul>
+<li><p>选择和投影操作尽早执行</p>
+</li>
+<li><p>把某些选择操作与笛卡尔积相结合，形成一个连接操作</p>
+</li>
+<li>同时执行相同关系上的多个选择和投影操作</li>
+<li>把投影操作与连接操作结合起来执行</li>
+<li>提取公共表达式（如果一个反复出现的公共表达式结果不是很大，且从外存读入的时间小于计算时间，可以组织计算一次并存储结果）</li>
+</ul>
+</li>
+<li><p>启发式代数优化算法</p>
+<ul>
+<li>构造查询的内部表示是查询处理的第一步。给定一个用高级语言定义的查询，需要两步来构造该查询的内部表示。<ul>
+<li>把高级语言定义的查询转换为关系代数表达式<ul>
+<li>使用from从句中的关系构造笛卡尔积，然后再这个基础上构造选择操作，最后构造投影操作</li>
+</ul>
+</li>
+<li>把关系代数表达式转化为查询树</li>
+</ul>
+</li>
+<li>算法流程：<ul>
+<li>把每个选择操作$\sigma_{C1 and….and Cn}(E)$转化为$\sigma_{C1}(…(\sigma_{Cn}(E))…)$</li>
+<li>把每个选择操作移到尽可能靠近叶结点</li>
+<li>把每个投影操作尽可能靠近叶结点</li>
+<li>把串接的多个选择或多个投影操作组合为单个的选择或投影操作</li>
+<li>重新安排叶结点，使既有最小选择操作的叶结点最先执行</li>
+<li>组合笛卡尔积和相继的选择操作形成连接操作</li>
+<li>把最后的查询树划分为多个子树，使得每个子树上的操作可以由单个存取程序一次完成，划分方法如下：<ul>
+<li>每个耳目操作在且仅在一个子树中</li>
+<li>如果二目操作a在子树t中，而且从叶到根的方向的路径b$\rightarrow$a是仅包含一目操作的最长路径，则b$\rightarrow$a也包含在t中</li>
+</ul>
+</li>
+<li>产生一个计算最后查询树的程序，每一步计算一个子树</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>基于复杂性估计的查询优化算法</p>
+<p>两个阶段：</p>
+<ul>
+<li>用启发式优化算法产生逻辑上优化的关系代数表达式或查询计划p</li>
+<li>为p中每个关系代数操作选择具有最小复杂性的实现算法，确定p的优化执行策略p(A)</li>
+<li>影响查询执行效率的主要因素是磁盘存取块数</li>
+</ul>
+<h6 id="本章重点：熟练掌握关系代数表达式等价变换规则；掌握启发式查询优化算法。"><a href="#本章重点：熟练掌握关系代数表达式等价变换规则；掌握启发式查询优化算法。" class="headerlink" title="本章重点：熟练掌握关系代数表达式等价变换规则；掌握启发式查询优化算法。"></a>本章重点：熟练掌握关系代数表达式等价变换规则；掌握启发式查询优化算法。</h6>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "数据库系统6&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
