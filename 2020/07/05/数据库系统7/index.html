@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="天水的小站www">
+  <meta name="author" content="天浮于水">
+  <meta name="keywords" content="">
+  <title>数据库系统7 · 天浮于水w</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>天浮于水w</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页菌</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链们</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于天水w</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/shu7.jpg')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 七月 5日 2020, 10:05 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.7k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      12 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>​        数据库系统7——并发控制&amp;数据库恢复。</p>
+<a id="more"></a>
+<h2 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h2><h5 id="事务概念"><a href="#事务概念" class="headerlink" title="事务概念"></a>事务概念</h5><ul>
+<li>事务：用户定义的一个数据库操作序列，这些操作耀目全做，要么全不做，是一个不可分割的工作单位。</li>
+<li>事务与程序不同<ul>
+<li>在关系数据库中，一个事务可以是一条SQL语句，一组SQL语句或整个程序</li>
+<li>一个程序通常包含多个事务</li>
+</ul>
+</li>
+<li><p>事务是并发控制和恢复的基本单位</p>
+</li>
+<li><p>事务的特性（ACID）</p>
+<ul>
+<li>原子性（Atomicity）：完全执行或者完全不执行</li>
+<li>一致性（Consistency）：事务执行的结果必须是使数据库从一个一致性状态变到另一个一致性状态<ul>
+<li>一致性状态：数据库中只包含成功事务提交的结果</li>
+<li>不一致性状态：发生故障，有些事务被迫终端，而一部分修改已经写入物理数据库，此时数据库处于一种不正确的状态</li>
+</ul>
+</li>
+<li>隔离性（Isolation）：表面看起来，每个事务都是在没有其他事务同时执行的情况下执行的<ul>
+<li>一个事务内部的操作及使用的数据对其他并发事务是隔离的</li>
+<li>并发执行的各个事务之间不能相互干扰</li>
+</ul>
+</li>
+<li>持久性（Durability）：一个事务一旦提交，它对数据库中数据的改变就应该是永久性的<ul>
+<li>接下来执行的其他操作或故障不应该对其执行结果有任何影响</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>保证事务ACID特性是事务处理的任务</li>
+<li><p>破坏ACID特性的因素：</p>
+<ul>
+<li>多个事务并行运行时，不同事务的操作交叉执行</li>
+<li>事务在运行过程中被强行停止</li>
+</ul>
+</li>
+<li><p>事务运用以下两个操作访问数据：</p>
+<ul>
+<li>Read(X)：从数据库把数据项X传送到事务的局部缓冲区</li>
+<li>Write(X)：从事务的局部缓冲区把数据项传回数据库</li>
+</ul>
+</li>
+</ul>
+<h5 id="事务的并发执行和调度"><a href="#事务的并发执行和调度" class="headerlink" title="事务的并发执行和调度"></a>事务的并发执行和调度</h5><p>调度：一个或多个事务的重要操作按时间排序的一个序列</p>
+<ul>
+<li>串行调度</li>
+</ul>
+<p>可串行化调度：不管数据库初始状态如何，一个调度对数据库状态的影响都和某个串行调度相同，则称这个调度时可串行化的</p>
+<p>冲突：调度中一对连续的动作，满足，如果二者顺序调换，那么涉及的事务中至少有一个的行伪会改变</p>
+<ul>
+<li>同一事务的两个动作冲突</li>
+<li>不同事务对同一数据库元素的写冲突</li>
+<li>不同事务对同一数据库元素的读和写冲突</li>
+</ul>
+<p>冲突可串行化：</p>
+<ul>
+<li>我们说两个调度是<strong>冲突等价</strong>的，如果通过一系列相邻动作的非冲突交换能将它们中的一个转换为另一个</li>
+<li>如果说一个调度冲突等价于一个串行调度，那么我们说该调度是<strong>冲突可串行化</strong>的</li>
+</ul>
+<p>优先关系：</p>
+<ul>
+<li>已知调度S，其中涉及事务T1和T2，可能还有其他事务。我们说T1优先于T2，记作T1&lt;T2，如果有T1的动作A1和T2的动作A2，满足：<ul>
+<li>在S中A1在A2前；</li>
+<li>A1和A2都涉及同一组数据库元素，且，A1和A2中至少有一个动作是写</li>
+</ul>
+</li>
+<li>因此，在任何冲突等价于S的调度中，A1将出现在A2前。所以，如果这些调度中有一个是串行调度，那么该调度必然使T1在T2前。</li>
+</ul>
+<p>优先图</p>
+<ul>
+<li>Ti &lt; Tj，有i到j的边</li>
+</ul>
+<p>冲突可串行性判断</p>
+<ul>
+<li>构造优先图，判断其中是否有环</li>
+</ul>
+<h5 id="并发控制协议"><a href="#并发控制协议" class="headerlink" title="并发控制协议"></a>并发控制协议</h5><p>包括：基于锁的协议、基于时间戳的协议、多版本机制、快照隔离</p>
+<p><strong>基于锁的并发控制协议</strong></p>
+<ul>
+<li><p>锁的概念</p>
+<h6 id="一个保证可串行性的方法使在互斥的方式下存取数据项，即，当一个事务存取一个数据项时，不允许其他事务修改这个数据项。（可以通过基于锁的并发控制协议实现）"><a href="#一个保证可串行性的方法使在互斥的方式下存取数据项，即，当一个事务存取一个数据项时，不允许其他事务修改这个数据项。（可以通过基于锁的并发控制协议实现）" class="headerlink" title="一个保证可串行性的方法使在互斥的方式下存取数据项，即，当一个事务存取一个数据项时，不允许其他事务修改这个数据项。（可以通过基于锁的并发控制协议实现）"></a>一个保证可串行性的方法使在互斥的方式下存取数据项，即，当一个事务存取一个数据项时，不允许其他事务修改这个数据项。（可以通过基于锁的并发控制协议实现）</h6><ul>
+<li><p>锁的两种类型：</p>
+<ul>
+<li>共享锁：获取后可读不可写</li>
+<li>互斥锁：获取后可读也可写</li>
+</ul>
+</li>
+<li><p>每个事务在存取一个数据项之前必须获得这个数据项上的锁</p>
+</li>
+<li><p>一个事务需要获得的锁的类型依赖于它将在数据项上执行什么样的操作</p>
+</li>
+<li><p>相容关系：</p>
+<p><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F7.assets/image-20200706202210951.png" srcset="/img/loading.gif" alt="image-20200706202210951" style="zoom: 67%;"></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>事务通过执行<strong>LOCK-S(Q)</strong>操作申请数据项Q上的共享锁</p>
+</li>
+<li><p>事务通过执行<strong>LOCK-X(Q)</strong>操作申请数据项Q上的互斥锁</p>
+</li>
+<li><p><strong>UNLOCK(Q)</strong>操作用来释放数据项Q上的锁</p>
+</li>
+<li><p>一个事务完成了对一个数据项的最后一次存取后立刻放弃锁，可能无法确保调度的可串行性</p>
+<ul>
+<li>释放操作放到最后——可能死锁</li>
+<li>死锁时必须放弃至少一个处于死锁状态的事务以使其他事务可以继续运行</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>死锁、死锁的处理</p>
+<ul>
+<li>死锁预防：<ul>
+<li>产生原因：两个或多个事务都已封锁了一些数据对象，然后又都请求对已经被其他食物封锁的数据对象加锁，从而出现死等待</li>
+<li>因此要破坏产生死锁的条件</li>
+<li>两个预防方法：<ul>
+<li>一次封锁法<ul>
+<li>要求每个事务必须一次将所有要使用的数据全部加锁，否则就不能继续执行</li>
+<li>问题：降低系统并发、难于实现精确确定封锁对象</li>
+</ul>
+</li>
+<li>顺序封锁法<ul>
+<li>预先对数据对象规定一个封锁顺序，所有事务都按照这个顺序进行封锁</li>
+<li>问题：维护成本高、难以实现</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>死锁的检测与恢复<ul>
+<li>死锁的诊断：<ul>
+<li>超时法：等待时间超过规定<ul>
+<li>优点：实现简单</li>
+<li>缺点：可能误判或不及时发现</li>
+</ul>
+</li>
+<li>事务等待图法：用等待图动态反应所有事务的等待情况<ul>
+<li>有向图G=(T,U)</li>
+<li>T为节点集合，每个节点表示正运行的事务</li>
+<li>U为边的集合，每条边表示事务等待的情况</li>
+<li>若T1等待T2，则T1，T2之间划一条有向边，从T1指向T2。</li>
+<li>并发控制子系统周期性地生成等待图，如果发现图中存在回路，则表示出现了死锁</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>死锁的恢复<ul>
+<li>选择牺牲者：必须决定回滚哪一个（哪一些）事务以打破死锁，使事务回滚代价最小</li>
+<li>回滚：彻底回滚、部分回滚</li>
+<li>饿死：总是同一事物被选为牺牲者<ul>
+<li>需保证一个事务被选为牺牲者的次数有限</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>两段锁并发控制协议</p>
+<ul>
+<li>两段锁协议：要求每个事务分两个进行数据项加锁和解锁<ul>
+<li>加锁阶段：事务申请可以获得任何数据项上的任何类型的锁，但是不能释放任何锁</li>
+<li>解锁阶段：事务申请可以释放任何数据项上的任何类型的锁，但是不能申请任何锁</li>
+</ul>
+</li>
+<li>每个事务开始运行后即进入加锁阶段，申请获得所需要是所有锁</li>
+<li>当一个事务第一次释放锁时，该事务进入解锁阶段。进入解锁阶段的事务不能再申请任何锁</li>
+</ul>
+</li>
+<li>两段锁改进：<ul>
+<li>用UPGRADE表示共享锁到互斥锁转换的操作，用DOWNGRADE表示互斥锁到共享锁的转换操作。<ul>
+<li>UPGRADE只能在加锁阶段使用，DOWNGRADE只能在解锁阶段使用</li>
+</ul>
+</li>
+<li>当事务T提交一个READ(Q)操作时，系统先执行LOCK-S(Q)操作，然后再执行READ(Q)操作。当事务T提交一个WRITE(Q)操作时，先检查T是否已持有共享锁。是则先执行UPGRADE(Q)操作，再执行WRITE(Q)操作；否则先执行LOCK-X(Q)操作，再执行WRITE(Q)操作。</li>
+<li>任何一个满足两段锁协议的合理调度都是冲突可串行的，但是，不是每组具有冲突可串行调度的事务都有一个满足两段锁协议的调度。</li>
+</ul>
+</li>
+</ul>
+<p><strong>基于时间戳的并发控制协议</strong></p>
+<h6 id="实现决定事务的次序，最常见的方法是时间戳排序机制"><a href="#实现决定事务的次序，最常见的方法是时间戳排序机制" class="headerlink" title="实现决定事务的次序，最常见的方法是时间戳排序机制"></a>实现决定事务的次序，最常见的方法是时间戳排序机制</h6><p>对于系统中每个事务Ti，我们把一个唯一的固定时间戳和它联系起来，记为TS(Ti)，如果新引进Tj进入系统，则TS(Ti)&lt;TS(Tj)。</p>
+<ul>
+<li><p>事务的时间戳决定了串行化顺序</p>
+</li>
+<li><p>每个数据项Q需要与两个时间戳值相关联</p>
+<ul>
+<li>W-timestamp(Q)：表示成功执行write(Q)的所有事务的最大时间戳</li>
+<li>R-timestamp(Q)：表示成功执行read(Q)的所有事务的最大时间戳</li>
+</ul>
+</li>
+<li><p>优点：保证冲突可串行化、保证无死锁</p>
+</li>
+<li><p>缺点：一系列冲突的短事务可能引起长事务反复重启，导致长事务饿死</p>
+</li>
+<li><p>可能产生不可恢复的调度</p>
+</li>
+<li><p>Thomas写规则</p>
+<p><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F7.assets/image-20200706230829922.png" srcset="/img/loading.gif" alt="image-20200706230829922" style="zoom: 67%;"></p>
+</li>
+</ul>
+<h6 id="本章重点：掌握事务的概念及性质、掌握事务调度和并发控制的概念、掌握基于锁的并发控制协议、掌握死锁的检测。"><a href="#本章重点：掌握事务的概念及性质、掌握事务调度和并发控制的概念、掌握基于锁的并发控制协议、掌握死锁的检测。" class="headerlink" title="本章重点：掌握事务的概念及性质、掌握事务调度和并发控制的概念、掌握基于锁的并发控制协议、掌握死锁的检测。"></a>本章重点：掌握事务的概念及性质、掌握事务调度和并发控制的概念、掌握基于锁的并发控制协议、掌握死锁的检测。</h6><h2 id="数据库恢复"><a href="#数据库恢复" class="headerlink" title="数据库恢复"></a>数据库恢复</h2><h5 id="数据库恢复的必要性"><a href="#数据库恢复的必要性" class="headerlink" title="数据库恢复的必要性"></a>数据库恢复的必要性</h5><ul>
+<li>保证事务的原子性</li>
+<li>发生故障后可以恢复到正确状态</li>
+</ul>
+<p>故障分类：</p>
+<ul>
+<li>事务故障<ul>
+<li>逻辑故障：非法输入、找不到数据、溢出或超出资源限制</li>
+<li>系统错误：系统进入不良状态，如死锁，使事务无法正常执行</li>
+</ul>
+</li>
+<li>系统崩溃<ul>
+<li>硬件故障/软件或系统漏洞导致易失性存储器内容丢失</li>
+</ul>
+</li>
+<li>磁盘故障</li>
+</ul>
+<p>使用日志的数据库恢复技术</p>
+<ul>
+<li>数据库系统日志：记录有关事务的数据库操作信息的存储结构使数据库系统日志，简称日志</li>
+<li>格式：<T, start> <T, commit> <T, abort> <T, x, v1, v2></T,></T,></T,></T,></li>
+<li>为了保证日志在系统和磁盘发生故障时仍可使用，它必须永久地存在磁盘上</li>
+</ul>
+<p><strong>推迟更新技术</strong></p>
+<h6 id="把所有数据库更新操作推迟到该事务提交时执行"><a href="#把所有数据库更新操作推迟到该事务提交时执行" class="headerlink" title="把所有数据库更新操作推迟到该事务提交时执行"></a>把所有数据库更新操作推迟到该事务提交时执行</h6><p>遵循下述推迟更新协议：</p>
+<ul>
+<li>每个事务达到提交点之前不能更新数据库</li>
+<li>在一个事务的所有更新操作的对应日志记录永久写入存储器之前，该事务不能到达提交点。</li>
+</ul>
+<p>当一个事务达到提交点时，称该事务到达部分提交状态</p>
+<ul>
+<li>推迟更新协议保证，当一个事务部分提交时，该事务的所有更新状态都已经记录在了日志中</li>
+<li>当一个事务部分提交时，推迟更新技术可以使用日志中有关该事务的数据库更新操作的信息更新数据库。如果一个事务部分提交之前异常结束或者发生系统故障，则有关该事务的信息会被删除。</li>
+</ul>
+<p>使用日记的数据库恢复技术：</p>
+<ul>
+<li><p>进行redo(T)操作。（redo操作必须时幂等的）</p>
+</li>
+<li><p>当系统发生故障并被修复以后，考察日志确定需要redo的事务T。（包含start和commit）</p>
+</li>
+<li>恢复过程如下：从后向前扫描，确定提交事务表和未提交事务表，对于前者执行redo，后者进行删除。</li>
+</ul>
+<p><strong>即时更新技术</strong></p>
+<h6 id="允许事务直接更新数据库。处于活动状态的事务直接在数据库上实施的更新称为非提交更新。"><a href="#允许事务直接更新数据库。处于活动状态的事务直接在数据库上实施的更新称为非提交更新。" class="headerlink" title="允许事务直接更新数据库。处于活动状态的事务直接在数据库上实施的更新称为非提交更新。"></a>允许事务直接更新数据库。处于活动状态的事务直接在数据库上实施的更新称为非提交更新。</h6><p>即时更新协议：</p>
+<ul>
+<li>所有<T, x, v1, v2>型日志安全地、永久存储到存储器之前，事务T不能更新数据库。</T,></li>
+<li>所有<T, x, v1, v2>型日志安全地、永久存储到存储器之前，不允许事务T提交。</T,></li>
+</ul>
+<p>即时更新技术需要如下两个操作：</p>
+<ul>
+<li>undo(T)</li>
+<li>redo(T)</li>
+<li>恢复处理过程如下：<ul>
+<li>从后向前扫描，建立提交事务表和未提交事务表</li>
+<li>对于提交事务表执行redo，对于未提交事务表执行undo并写<T, abort>日志记录表示撤销完成</T,></li>
+</ul>
+</li>
+</ul>
+<h5 id="使用检查点的数据库恢复技术"><a href="#使用检查点的数据库恢复技术" class="headerlink" title="使用检查点的数据库恢复技术"></a>使用检查点的数据库恢复技术</h5><h6 id="日志技术太耗时且恢复过程过长"><a href="#日志技术太耗时且恢复过程过长" class="headerlink" title="日志技术太耗时且恢复过程过长"></a>日志技术太耗时且恢复过程过长</h6><p>改进方式：在日志文件中增加检查点记录(checkpoint)</p>
+<ul>
+<li>恢复子系统在登陆日志文件期间动态地维护日志</li>
+</ul>
+<p>检查点执行过程如下：</p>
+<ul>
+<li>将当前位于主存的所有日志输出到稳定存储器</li>
+<li>将所有修改的缓冲块输出到磁盘</li>
+<li>将<checkpoint l\>输出到稳定的存储器，其中L是执行检查点时正在活跃的事务列表</checkpoint></li>
+</ul>
+<h6 id="在检查点执行过程中，不允许任何事务执行任何更新"><a href="#在检查点执行过程中，不允许任何事务执行任何更新" class="headerlink" title="在检查点执行过程中，不允许任何事务执行任何更新"></a>在检查点执行过程中，不允许任何事务执行任何更新</h6><p>建立检查点的时间：</p>
+<ul>
+<li>定期：预定时间间隔，如每隔一小时</li>
+<li>不定期：遵循某种规则，如日志文件写满一半</li>
+</ul>
+<p>检查点技术的优点：高效、执行redo、undo时只需要考虑L以及<checkpoint l\>记录写道日志中后才开始执行的事务</checkpoint></p>
+<p><strong>恢复过程</strong>：</p>
+<ul>
+<li>找到最后一条<checkpoint l \>记录</checkpoint></li>
+<li>对于L及检查点之后开始的操作，没有commit或abort记录则undo；否则redo。</li>
+</ul>
+<h5 id="恢复算法"><a href="#恢复算法" class="headerlink" title="恢复算法"></a>恢复算法</h5><p>正常操作时，事务T的回滚执行如下操作：</p>
+<ul>
+<li>从后往前扫描，对于每个<T, x, v1, v2>的日志记录，把v1写入X，并往日志中写入一个特殊的只读日志记录<T, x, v1>，称为补偿日志记录，这样的记录不需要undo。</T,></T,></li>
+<li>一旦发现<T,start>，就停止扫描并往日志中写入<T, abort></T,></T,start></li>
+</ul>
+<p>系统崩溃后的恢复：</p>
+<ul>
+<li>重做阶段：从最后一个检查点开始正向扫描，将undo-list初始设置为L，一旦遇到<T, x, v1, v1>或者<T, x, v2>则重做；一旦发现<T, start>则将T添加到undo-list；一旦发现commit和abort则将T从undo-list删除。</T,></T,></T,></li>
+<li>撤销阶段：从尾部反向扫描，发现undo-list中的就undo。发现start就写入abort并将其从undo-list删掉。undo-list为空则结束。</li>
+</ul>
+<h5 id="缓冲技术"><a href="#缓冲技术" class="headerlink" title="缓冲技术"></a>缓冲技术</h5><ul>
+<li><p>日志缓冲技术</p>
+<ul>
+<li>一个日志记录远小于存储器读写单位，单个进行开销过大</li>
+<li><p>主存中设置缓冲区，其大小等于永久存储其的读写单位，缓冲区满一起永久写入存储器。</p>
+</li>
+<li><p>需增加如下协议：</p>
+<ul>
+<li>commit记录永久写入存储器后才可以进入提交状态</li>
+<li>非commit型日志记录必须在commit型记录之前永久写入存储器</li>
+<li>主缓冲区中的数据库数据必须在有关日志记录永久写入后才可以永久写入存储器中的数据库。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据库缓冲技术<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F7.assets/image-20200708142014290.png" srcset="/img/loading.gif" alt="image-20200708142014290"></p>
+</li>
+</ul>
+<h6 id="本章重点：掌握故障的分类、掌握使用日志的数据库恢复技术。"><a href="#本章重点：掌握故障的分类、掌握使用日志的数据库恢复技术。" class="headerlink" title="本章重点：掌握故障的分类、掌握使用日志的数据库恢复技术。"></a>本章重点：掌握故障的分类、掌握使用日志的数据库恢复技术。</h6>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "数据库系统7&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
