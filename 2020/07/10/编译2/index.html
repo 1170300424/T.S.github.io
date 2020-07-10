@@ -167,7 +167,7 @@
           <div class="markdown-body">
             <p>编译原理2——词法分析&amp;语法分析</p>
 <a id="more"></a>
-<h1 id="第三章-词法分析"><a href="#第三章-词法分析" class="headerlink" title="第三章 词法分析"></a>第三章 词法分析</h1><h5 id="单词的描述"><a href="#单词的描述" class="headerlink" title="单词的描述"></a>单词的描述</h5><ul>
+<h1 id="第三章-词法分析"><a href="#第三章-词法分析" class="headerlink" title="第三章 词法分析"></a>第三章 词法分析</h1><h4 id="单词的描述"><a href="#单词的描述" class="headerlink" title="单词的描述"></a>单词的描述</h4><ul>
 <li>正则表达式（RE）<ul>
 <li>可以由较小的正则表达式按照规则递归地构建，每个正则表达式定义一个语言。</li>
 </ul>
@@ -175,7 +175,7 @@
 <li>正则语言：可以用RE定义的语言叫做<strong>正则语言</strong>或<strong>正则集合</strong></li>
 <li>正则文法与正则表达式等价</li>
 </ul>
-<h5 id="单词的识别"><a href="#单词的识别" class="headerlink" title="单词的识别"></a>单词的识别</h5><ul>
+<h4 id="单词的识别"><a href="#单词的识别" class="headerlink" title="单词的识别"></a>单词的识别</h4><ul>
 <li><p>有穷自动机（FA）</p>
 <ul>
 <li>离散的输入输出信息&amp;又穷数目的内部状态</li>
@@ -215,7 +215,7 @@
 <li>子集构造法：从NFA构造等价DFA</li>
 </ul>
 <p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB3.assets/image-20200525221557719.png" srcset="/img/loading.gif" alt="image-20200525221557719" style="zoom: 50%;"></p>
-<h5 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h5><ul>
+<h4 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h4><ul>
 <li>错误类型：<ul>
 <li>单词拼写错误</li>
 <li>非法字符</li>
@@ -231,11 +231,11 @@
 <li><p>错误恢复：恐慌模式</p>
 </li>
 </ul>
-<h5 id="词法分析器生成工具Lex"><a href="#词法分析器生成工具Lex" class="headerlink" title="词法分析器生成工具Lex"></a>词法分析器生成工具Lex</h5><h1 id="第四章-语法分析"><a href="#第四章-语法分析" class="headerlink" title="第四章 语法分析"></a>第四章 语法分析</h1><h3 id="语法分析-上"><a href="#语法分析-上" class="headerlink" title="语法分析 上"></a>语法分析 上</h3><h6 id="主要任务：根据给定文法识别输入句子各个成分以构造分析树"><a href="#主要任务：根据给定文法识别输入句子各个成分以构造分析树" class="headerlink" title="主要任务：根据给定文法识别输入句子各个成分以构造分析树"></a>主要任务：根据给定文法识别输入句子各个成分以构造分析树</h6><h6 id="大部分程序设计语言的语法构造可以用CFG来描述，CFG以token作为终结符"><a href="#大部分程序设计语言的语法构造可以用CFG来描述，CFG以token作为终结符" class="headerlink" title="大部分程序设计语言的语法构造可以用CFG来描述，CFG以token作为终结符"></a>大部分程序设计语言的语法构造可以用CFG来描述，CFG以token作为终结符</h6><h5 id="语法分析的种类"><a href="#语法分析的种类" class="headerlink" title="语法分析的种类"></a>语法分析的种类</h5><ul>
+<h4 id="词法分析器生成工具Lex"><a href="#词法分析器生成工具Lex" class="headerlink" title="词法分析器生成工具Lex"></a>词法分析器生成工具Lex</h4><h1 id="第四章-语法分析"><a href="#第四章-语法分析" class="headerlink" title="第四章 语法分析"></a>第四章 语法分析</h1><h3 id="语法分析-上"><a href="#语法分析-上" class="headerlink" title="语法分析 上"></a>语法分析 上</h3><h6 id="主要任务：根据给定文法识别输入句子各个成分以构造分析树"><a href="#主要任务：根据给定文法识别输入句子各个成分以构造分析树" class="headerlink" title="主要任务：根据给定文法识别输入句子各个成分以构造分析树"></a>主要任务：根据给定文法识别输入句子各个成分以构造分析树</h6><h6 id="大部分程序设计语言的语法构造可以用CFG来描述，CFG以token作为终结符"><a href="#大部分程序设计语言的语法构造可以用CFG来描述，CFG以token作为终结符" class="headerlink" title="大部分程序设计语言的语法构造可以用CFG来描述，CFG以token作为终结符"></a>大部分程序设计语言的语法构造可以用CFG来描述，CFG以token作为终结符</h6><h4 id="语法分析的种类"><a href="#语法分析的种类" class="headerlink" title="语法分析的种类"></a>语法分析的种类</h4><ul>
 <li>自顶向下的分析——推导</li>
 <li>自底向上的分析——归约</li>
 </ul>
-<h5 id="自顶向下的分析"><a href="#自顶向下的分析" class="headerlink" title="自顶向下的分析"></a>自顶向下的分析</h5><h6 id="替换哪个非终结符？用哪个候选式替换？"><a href="#替换哪个非终结符？用哪个候选式替换？" class="headerlink" title="替换哪个非终结符？用哪个候选式替换？"></a>替换哪个非终结符？用哪个候选式替换？</h6><ul>
+<h4 id="自顶向下的分析"><a href="#自顶向下的分析" class="headerlink" title="自顶向下的分析"></a>自顶向下的分析</h4><h6 id="替换哪个非终结符？用哪个候选式替换？"><a href="#替换哪个非终结符？用哪个候选式替换？" class="headerlink" title="替换哪个非终结符？用哪个候选式替换？"></a>替换哪个非终结符？用哪个候选式替换？</h6><ul>
 <li>最左推导：总是选择每个句型的最左非终结符进行替换<ul>
 <li>对应最右归约</li>
 </ul>
@@ -266,7 +266,7 @@
 <li><p><strong>预测分析</strong>（不需要回溯、确定的自顶向下分析方法）</p>
 </li>
 </ul>
-<h5 id="预测分析法"><a href="#预测分析法" class="headerlink" title="预测分析法"></a>预测分析法</h5><ul>
+<h4 id="预测分析法"><a href="#预测分析法" class="headerlink" title="预测分析法"></a>预测分析法</h4><ul>
 <li><p>S_文法：简单的确定性文法（不包含空产生式）</p>
 <ul>
 <li>右部终结符开始且部首终结符不同</li>
@@ -315,7 +315,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="语法分析-中"><a href="#语法分析-中" class="headerlink" title="语法分析 中"></a>语法分析 中</h3><h5 id="自底向上的语法分析"><a href="#自底向上的语法分析" class="headerlink" title="自底向上的语法分析"></a>自底向上的语法分析</h5><h6 id="最左归约（反向构造最右推导）"><a href="#最左归约（反向构造最右推导）" class="headerlink" title="最左归约（反向构造最右推导）"></a>最左归约（反向构造最右推导）</h6><ul>
+<h3 id="语法分析-中"><a href="#语法分析-中" class="headerlink" title="语法分析 中"></a>语法分析 中</h3><h4 id="自底向上的语法分析"><a href="#自底向上的语法分析" class="headerlink" title="自底向上的语法分析"></a>自底向上的语法分析</h4><h6 id="最左归约（反向构造最右推导）"><a href="#最左归约（反向构造最右推导）" class="headerlink" title="最左归约（反向构造最右推导）"></a>最左归约（反向构造最右推导）</h6><ul>
 <li>通用框架：移入-归约分析<ul>
 <li>对输入串从左到右扫描，将零个或多个输入符号移到栈的顶端，直到可以发生规约，则归约。</li>
 <li>循环直到检测到错误或栈中包含开始符号且输入缓冲区为空</li>
@@ -324,11 +324,11 @@
 <li>句柄——句型的最左直接短语</li>
 <li>移入-归约的四种动作：移入、归约、接收、报错</li>
 </ul>
-<h5 id="LR分析法"><a href="#LR分析法" class="headerlink" title="LR分析法"></a>LR分析法</h5><p>三种状态——移进状态、待约状态、规约状态</p>
+<h4 id="LR分析法"><a href="#LR分析法" class="headerlink" title="LR分析法"></a>LR分析法</h4><p>三种状态——移进状态、待约状态、规约状态</p>
 <p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB4.assets/image-20200529145332435.png" srcset="/img/loading.gif" alt="image-20200529145332435" style="zoom:50%;"></p>
-<h5 id="LR分析器总体结构"><a href="#LR分析器总体结构" class="headerlink" title="LR分析器总体结构"></a>LR分析器总体结构</h5><p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB4.assets/image-20200529145420303.png" srcset="/img/loading.gif" alt="image-20200529145420303" style="zoom:67%;"></p>
-<h5 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h5><p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB4.assets/image-20200529145911333.png" srcset="/img/loading.gif" alt="image-20200529145911333" style="zoom:67%;"></p>
-<h5 id="LR（0）分析"><a href="#LR（0）分析" class="headerlink" title="LR（0）分析"></a>LR（0）分析</h5><ul>
+<h4 id="LR分析器总体结构"><a href="#LR分析器总体结构" class="headerlink" title="LR分析器总体结构"></a>LR分析器总体结构</h4><p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB4.assets/image-20200529145420303.png" srcset="/img/loading.gif" alt="image-20200529145420303" style="zoom:67%;"></p>
+<h4 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h4><p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB4.assets/image-20200529145911333.png" srcset="/img/loading.gif" alt="image-20200529145911333" style="zoom:67%;"></p>
+<h4 id="LR（0）分析"><a href="#LR（0）分析" class="headerlink" title="LR（0）分析"></a>LR（0）分析</h4><ul>
 <li>右部某位置标有圆点的产生式称为相应文法的一个LR（0）项目<ul>
 <li>项目描述了句柄识别的状态</li>
 <li>空产生式只有一个项目$A\rightarrow ·$</li>
@@ -350,12 +350,12 @@
 </ul>
 </li>
 </ul>
-<h3 id="语法分析-下"><a href="#语法分析-下" class="headerlink" title="语法分析 下"></a>语法分析 下</h3><h5 id="SLR分析"><a href="#SLR分析" class="headerlink" title="SLR分析"></a>SLR分析</h5><p><img src="/img/%E7%BC%96%E8%AF%912.assets/image-20200529154308453.png" srcset="/img/loading.gif" alt="image-20200529154308453" style="zoom: 50%;"></p>
+<h3 id="语法分析-下"><a href="#语法分析-下" class="headerlink" title="语法分析 下"></a>语法分析 下</h3><h4 id="SLR分析"><a href="#SLR分析" class="headerlink" title="SLR分析"></a>SLR分析</h4><p><img src="/img/%E7%BC%96%E8%AF%912.assets/image-20200529154308453.png" srcset="/img/loading.gif" alt="image-20200529154308453" style="zoom: 50%;"></p>
 <p><img src="/img/%E7%BC%96%E8%AF%912.assets/image-20200529154847266.png" srcset="/img/loading.gif" alt="image-20200529154847266"></p>
 <ul>
 <li>移入/归约冲突：移入项目的移入符号在规约项目规约后的follow集中</li>
 </ul>
-<h5 id="LR（1）分析"><a href="#LR（1）分析" class="headerlink" title="LR（1）分析"></a>LR（1）分析</h5><ul>
+<h4 id="LR（1）分析"><a href="#LR（1）分析" class="headerlink" title="LR（1）分析"></a>LR（1）分析</h4><ul>
 <li><p>对于某个产生式的归约，在不同的使用位置要求不同的后继符号</p>
 <ul>
 <li>在特定位置，A的后继符号集合使FOLLOW（A）的子集</li>
@@ -371,15 +371,15 @@
 <p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB4.assets/image-20200529161351439.png" srcset="/img/loading.gif" alt="image-20200529161351439" style="zoom:67%;"></p>
 <p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB4.assets/image-20200529161400598.png" srcset="/img/loading.gif" alt="image-20200529161400598" style="zoom:67%;"></p>
 <p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB4.assets/image-20200529161513326.png" srcset="/img/loading.gif" alt="image-20200529161513326" style="zoom:67%;"></p>
-<h5 id="LALR分析"><a href="#LALR分析" class="headerlink" title="LALR分析"></a>LALR分析</h5><p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB4.assets/image-20200529161558115.png" srcset="/img/loading.gif" alt="image-20200529161558115" style="zoom:67%;"></p>
-<h5 id="二义性文法的LR分析"><a href="#二义性文法的LR分析" class="headerlink" title="二义性文法的LR分析"></a>二义性文法的LR分析</h5><ul>
+<h4 id="LALR分析"><a href="#LALR分析" class="headerlink" title="LALR分析"></a>LALR分析</h4><p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB4.assets/image-20200529161558115.png" srcset="/img/loading.gif" alt="image-20200529161558115" style="zoom:67%;"></p>
+<h4 id="二义性文法的LR分析"><a href="#二义性文法的LR分析" class="headerlink" title="二义性文法的LR分析"></a>二义性文法的LR分析</h4><ul>
 <li>二义性文法都不是LR的<ul>
 <li>使用优先级和结合性解决</li>
 </ul>
 </li>
 <li>应该保守使用二义性文法，且有严格控制</li>
 </ul>
-<h5 id="LR分析中的错误处理"><a href="#LR分析中的错误处理" class="headerlink" title="LR分析中的错误处理"></a>LR分析中的错误处理</h5><ul>
+<h4 id="LR分析中的错误处理"><a href="#LR分析中的错误处理" class="headerlink" title="LR分析中的错误处理"></a>LR分析中的错误处理</h4><ul>
 <li><p>错误检测——分析表中的报错条目</p>
 </li>
 <li><p>错误恢复：</p>

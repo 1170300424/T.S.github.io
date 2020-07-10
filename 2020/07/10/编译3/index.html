@@ -178,15 +178,15 @@
 <li>语义分析</li>
 <li>中间代码生成</li>
 </ul>
-<h5 id="语法制导定义（SDD）"><a href="#语法制导定义（SDD）" class="headerlink" title="语法制导定义（SDD）"></a>语法制导定义（SDD）</h5><ul>
+<h4 id="语法制导定义（SDD）"><a href="#语法制导定义（SDD）" class="headerlink" title="语法制导定义（SDD）"></a>语法制导定义（SDD）</h4><ul>
 <li>将每个文法符号和一个语义属性集合相关联</li>
 <li>将每个产生式和一组语义规则相关联，用于计算该产生式中各文法符号的属性值。</li>
 </ul>
-<h5 id="语法制导翻译方案（SDT）"><a href="#语法制导翻译方案（SDT）" class="headerlink" title="语法制导翻译方案（SDT）"></a>语法制导翻译方案（SDT）</h5><ul>
+<h4 id="语法制导翻译方案（SDT）"><a href="#语法制导翻译方案（SDT）" class="headerlink" title="语法制导翻译方案（SDT）"></a>语法制导翻译方案（SDT）</h4><ul>
 <li>在产生式右部嵌入了程序片段的CFG，这些程序片段被称为语义动作（语义动作放在花括号内）</li>
 <li>一个语义动作在产生式中的位置决定了这个动作的执行时间</li>
 </ul>
-<h5 id="文法符号的属性"><a href="#文法符号的属性" class="headerlink" title="文法符号的属性"></a>文法符号的属性</h5><ul>
+<h4 id="文法符号的属性"><a href="#文法符号的属性" class="headerlink" title="文法符号的属性"></a>文法符号的属性</h4><ul>
 <li>综合属性<ul>
 <li>只能通过子节点或本身的属性值定义</li>
 <li>终结符可以具有综合属性（有词法分析器提供的词法值）</li>
@@ -209,7 +209,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="两类SDD"><a href="#两类SDD" class="headerlink" title="两类SDD"></a>两类SDD</h5><ul>
+<h4 id="两类SDD"><a href="#两类SDD" class="headerlink" title="两类SDD"></a>两类SDD</h4><ul>
 <li>S属性定义（S-SDD）<ul>
 <li>仅仅使用综合属性 </li>
 <li>可按照任意一个自底向上的顺序计算属性值</li>
@@ -226,7 +226,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="SDT"><a href="#SDT" class="headerlink" title="SDT"></a>SDT</h5><ul>
+<h4 id="SDT"><a href="#SDT" class="headerlink" title="SDT"></a>SDT</h4><ul>
 <li><p>语法制导翻译方案是在产生式右部中嵌入了程序片段（被称为语义动作）的CFG。</p>
 </li>
 <li><p>可以看作是SDD的具体实施方案</p>
@@ -279,7 +279,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="第六章-中间代码生成"><a href="#第六章-中间代码生成" class="headerlink" title="第六章 中间代码生成"></a>第六章 中间代码生成</h2><h5 id="声明语句的翻译"><a href="#声明语句的翻译" class="headerlink" title="声明语句的翻译"></a>声明语句的翻译</h5><ul>
+<h2 id="第六章-中间代码生成"><a href="#第六章-中间代码生成" class="headerlink" title="第六章 中间代码生成"></a>第六章 中间代码生成</h2><h4 id="声明语句的翻译"><a href="#声明语句的翻译" class="headerlink" title="声明语句的翻译"></a>声明语句的翻译</h4><ul>
 <li>主要任务：收集标识符的类型等属性信息，并为每一个名字分配一个相对地址</li>
 <li>类型表达式<ul>
 <li>基本类型（integer、real、char、boolean、type_error、void）</li>
@@ -298,7 +298,7 @@
 </li>
 </ul>
 <p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200529211430291.png" srcset="/img/loading.gif" alt="image-20200529211430291" style="zoom: 67%;"></p>
-<h5 id="赋值语句的翻译"><a href="#赋值语句的翻译" class="headerlink" title="赋值语句的翻译"></a>赋值语句的翻译</h5><ul>
+<h4 id="赋值语句的翻译"><a href="#赋值语句的翻译" class="headerlink" title="赋值语句的翻译"></a>赋值语句的翻译</h4><ul>
 <li><p>简单赋值语句的翻译</p>
 <ul>
 <li>主要任务：生成对表达式求值的三地址码</li>
@@ -327,15 +327,14 @@
 </ul>
 </li>
 </ul>
-<h5 id="控制语句的翻译"><a href="#控制语句的翻译" class="headerlink" title="控制语句的翻译"></a>控制语句的翻译</h5><p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605152117330.png" srcset="/img/loading.gif" alt="image-20200605152117330" style="zoom:67%;"></p>
+<h4 id="控制语句的翻译"><a href="#控制语句的翻译" class="headerlink" title="控制语句的翻译"></a>控制语句的翻译</h4><p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605152117330.png" srcset="/img/loading.gif" alt="image-20200605152117330" style="zoom:67%;"></p>
 <p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605152434442.png" srcset="/img/loading.gif" alt="image-20200605152434442" style="zoom: 67%;"></p>
 <p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605152450706.png" srcset="/img/loading.gif" alt="image-20200605152450706" style="zoom:67%;"></p>
 <p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605152525036.png" srcset="/img/loading.gif" alt="image-20200605152525036" style="zoom:67%;"></p>
-<p><strong>布尔表达式的翻译</strong></p>
-<ul>
+<h4 id="布尔表达式的翻译"><a href="#布尔表达式的翻译" class="headerlink" title="布尔表达式的翻译"></a><strong>布尔表达式的翻译</strong></h4><ul>
 <li>在跳转代码中，逻辑运算符&amp;&amp;，||和！被翻译成跳转指令，运算符本身不出现在代码中。布尔表达式的值是通过代码序列中的位置来表示的。</li>
 </ul>
-<h5 id="回填"><a href="#回填" class="headerlink" title="回填"></a>回填</h5><ul>
+<h4 id="回填"><a href="#回填" class="headerlink" title="回填"></a>回填</h4><ul>
 <li><p>基本思想</p>
 <ul>
 <li>生成一个跳转指令时，暂时不指定该跳转指令的目标标号。这样的指令都放入由跳转指令组成的列表中。同一个列表的所有跳转指令具有相同的目标标号，确定时进行填充。</li>
@@ -370,10 +369,10 @@
 </ul>
 </li>
 </ul>
-<h5 id="switch语句的翻译"><a href="#switch语句的翻译" class="headerlink" title="switch语句的翻译"></a>switch语句的翻译</h5><p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605160003367.png" srcset="/img/loading.gif" alt="image-20200605160003367" style="zoom:67%;"></p>
+<h4 id="switch语句的翻译"><a href="#switch语句的翻译" class="headerlink" title="switch语句的翻译"></a>switch语句的翻译</h4><p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605160003367.png" srcset="/img/loading.gif" alt="image-20200605160003367" style="zoom:67%;"></p>
 <p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605160032474.png" srcset="/img/loading.gif" alt="image-20200605160032474" style="zoom: 67%;"></p>
-<h5 id="过程调用语句的翻译"><a href="#过程调用语句的翻译" class="headerlink" title="过程调用语句的翻译"></a>过程调用语句的翻译</h5><p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605155723904.png" srcset="/img/loading.gif" alt="image-20200605155723904" style="zoom:67%;"></p>
-<h5 id="语义分析中的错误检测"><a href="#语义分析中的错误检测" class="headerlink" title="语义分析中的错误检测"></a>语义分析中的错误检测</h5><ul>
+<h4 id="过程调用语句的翻译"><a href="#过程调用语句的翻译" class="headerlink" title="过程调用语句的翻译"></a>过程调用语句的翻译</h4><p><img src="/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605155723904.png" srcset="/img/loading.gif" alt="image-20200605155723904" style="zoom:67%;"></p>
+<h4 id="语义分析中的错误检测"><a href="#语义分析中的错误检测" class="headerlink" title="语义分析中的错误检测"></a>语义分析中的错误检测</h4><ul>
 <li>变量或者过程未声明就使用</li>
 <li>变量或过程名重复声明</li>
 <li>运算分量类型不匹配 </li>
