@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="天水的小站www">
+  <meta name="author" content="天浮于水">
+  <meta name="keywords" content="">
+  <title>编译原理期末复习（3） · 天浮于水w</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>天浮于水w</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页菌</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链们</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于天水w</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/miku/3.jpg')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 七月 10日 2020, 3:12 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      6 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>编译原理3——语法制导翻译&amp;中间代码生成</p>
+<a id="more"></a>
+<h1 id="第五章-语法制导翻译"><a href="#第五章-语法制导翻译" class="headerlink" title="第五章 语法制导翻译"></a>第五章 语法制导翻译</h1><p>语法制导翻译：</p>
+<ul>
+<li>语法分析</li>
+<li>语义分析</li>
+<li>中间代码生成</li>
+</ul>
+<p>语义翻译：</p>
+<ul>
+<li>语义分析</li>
+<li>中间代码生成</li>
+</ul>
+<h5 id="语法制导定义（SDD）"><a href="#语法制导定义（SDD）" class="headerlink" title="语法制导定义（SDD）"></a>语法制导定义（SDD）</h5><ul>
+<li>将每个文法符号和一个语义属性集合相关联</li>
+<li>将每个产生式和一组语义规则相关联，用于计算该产生式中各文法符号的属性值。</li>
+</ul>
+<h5 id="语法制导翻译方案（SDT）"><a href="#语法制导翻译方案（SDT）" class="headerlink" title="语法制导翻译方案（SDT）"></a>语法制导翻译方案（SDT）</h5><ul>
+<li>在产生式右部嵌入了程序片段的CFG，这些程序片段被称为语义动作（语义动作放在花括号内）</li>
+<li>一个语义动作在产生式中的位置决定了这个动作的执行时间</li>
+</ul>
+<h5 id="文法符号的属性"><a href="#文法符号的属性" class="headerlink" title="文法符号的属性"></a>文法符号的属性</h5><ul>
+<li>综合属性<ul>
+<li>只能通过子节点或本身的属性值定义</li>
+<li>终结符可以具有综合属性（有词法分析器提供的词法值）</li>
+</ul>
+</li>
+<li>继承属性<ul>
+<li>只能通过父节点、兄弟节点或本身的属性值定义</li>
+<li>终结符没有继承属性</li>
+</ul>
+</li>
+<li>注释分析树：每个节点都带有属性值的分析树</li>
+<li>副作用</li>
+<li>属性文法：一个没有副作用的SDD又是也称为属性文法<ul>
+<li>属性文法的规则仅仅通过其他属性值和常量来定义一个属性值</li>
+</ul>
+</li>
+<li>依赖图：描述分析树种节点属性间依赖关系的有向图<ul>
+<li>分析树中每个标号为x的节点的每个属性a都对应着依赖图中的一个节点</li>
+<li>如果X.a的值依赖着 Y.b的值，则存在后者节点指向前者节点的有向边。</li>
+</ul>
+</li>
+</ul>
+<h5 id="两类SDD"><a href="#两类SDD" class="headerlink" title="两类SDD"></a>两类SDD</h5><ul>
+<li>S属性定义（S-SDD）<ul>
+<li>仅仅使用综合属性 </li>
+<li>可按照任意一个自底向上的顺序计算属性值</li>
+</ul>
+</li>
+<li>L属性定义（L-SDD）<ul>
+<li>每个属性要么是综合属性，要么是满足如下条件的继承属性：<ul>
+<li>假设存在一个产生式 $A \rightarrow X_1X_2X_3…X_{i-1}$，其右部符号的继承属性仅依赖于下列属性：</li>
+<li>A的继承属性</li>
+<li>产生式中该符号左边的属性</li>
+<li>该符号本身的属性，但是其全部属性不能在依赖图中形成环路</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="SDT"><a href="#SDT" class="headerlink" title="SDT"></a>SDT</h5><ul>
+<li><p>语法制导翻译方案是在产生式右部中嵌入了程序片段（被称为语义动作）的CFG。</p>
+</li>
+<li><p>可以看作是SDD的具体实施方案</p>
+</li>
+<li><p>两种SDT可在语法分析过程中实现的情况：</p>
+<ul>
+<li>LL分析+L属性SDD</li>
+<li>LR分析+S属性SDD</li>
+</ul>
+</li>
+<li><p>S-SDD转换为SDT的方法：每个语义动作放在产生式的最后</p>
+<ul>
+<li>SDT实现：在LR语法分析过程中当规约发生时执行相应的语义动作</li>
+<li>在分析站中使用一个附加的域来存放综合属性值</li>
+<li>将语义动作中的抽象定义式改写成具体可执行的栈操作</li>
+</ul>
+</li>
+<li><p>L-SDD转化成SDT：</p>
+<ul>
+<li>将计算某个非终结符号A的继承属性的动作插入到产生式右部仅靠A本次出现之前的位置上</li>
+<li>将计算一个产生式左部符号的综合属性的动作放置在这个产生式右部的最右端</li>
+</ul>
+</li>
+<li><p>L属性定义的SDT实现：</p>
+<ul>
+<li><p>在非递归的预测分析过程中进行语义翻译</p>
+<ul>
+<li>扩展语法分析栈</li>
+<li>分析栈中的每一个记录都对应这一段执行代码</li>
+<li>综合记录出栈时，要将综合属性值赋值给后面特定的语义动作</li>
+<li>变量展开时，如果其含有继承属性，则要将继承属性值复制给后面特定的语义动作</li>
+</ul>
+</li>
+<li><p>在递归的预测分析过程中进行语义翻译</p>
+<ul>
+<li>为每个非终结符A构造一个函数，A的每个继承属性对应该函数的一个形参，函数的返回值是A的的综合属性值。</li>
+<li>对出现在A产生式中的每个文法符号的每个属性都设置一个局部变量</li>
+<li>非终结符A的代码根据当前的输入决定使用哪个产生式</li>
+<li>与每个产生式有关的代码，从左到右考虑产生式右部的词法单元、非终结符及语义动作<ul>
+<li>对于带有综合属性x的词法单元X，把x的值保存在局部变量X.x中额案后产生一个匹配X的调用，并继续输入</li>
+<li>对于非终结符B，产生又不带有函数调用的赋值语句</li>
+<li>对于每个语义动作，直接转移到语法分析器中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>在LR分析的过程中进行语义翻译（自底向上）</p>
+<p><img src="/2020/07/10/%E7%BC%96%E8%AF%913/../themes/fluid/source/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB5.assets/image-20200529165841027.png" srcset="/img/loading.gif" alt="image-20200529165841027" style="zoom: 67%;"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="第六章-中间代码生成"><a href="#第六章-中间代码生成" class="headerlink" title="第六章 中间代码生成"></a>第六章 中间代码生成</h2><h5 id="声明语句的翻译"><a href="#声明语句的翻译" class="headerlink" title="声明语句的翻译"></a>声明语句的翻译</h5><ul>
+<li>主要任务：收集标识符的类型等属性信息，并为每一个名字分配一个相对地址</li>
+<li>类型表达式<ul>
+<li>基本类型（integer、real、char、boolean、type_error、void）</li>
+<li>为类型表达式命名，类型名也是类型表达式</li>
+<li>将类型构造符作用域类型表达式可以构成新的类型表达式<ul>
+<li>eg：array（数组构造符）、pointer（指针构造符）、$\times$（笛卡尔积构造符）、$\rightarrow$（函数构造符）、record（记录构造符）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>局部变量的存储分配<ul>
+<li>从类型表达式可知该类型在运行时所需的存储单元数量——类型的宽度</li>
+<li>在编译时刻，可以使用类型的宽度为每个名字分配一个相对地址</li>
+<li>名字的类型和相对地址信息保存在相应的符号表里</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/07/10/%E7%BC%96%E8%AF%913/../themes/fluid/source/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200529211430291.png" srcset="/img/loading.gif" alt="image-20200529211430291" style="zoom: 67%;"></p>
+<h5 id="赋值语句的翻译"><a href="#赋值语句的翻译" class="headerlink" title="赋值语句的翻译"></a>赋值语句的翻译</h5><ul>
+<li><p>简单赋值语句的翻译</p>
+<ul>
+<li>主要任务：生成对表达式求值的三地址码</li>
+</ul>
+<p><img src="/2020/07/10/%E7%BC%96%E8%AF%913/../themes/fluid/source/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200529213554528.png" srcset="/img/loading.gif" alt="image-20200529213554528" style="zoom: 67%;"></p>
+<ul>
+<li>增量翻译<ul>
+<li>在增量方法中，gen()指令不仅要构造新的三地址指令，还要将其添加到迄今为止已经生成的指令序列之后</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数组引用的翻译</p>
+<ul>
+<li><p>主要问题：却低估数组元素的存放地址（数组元素的寻址）</p>
+</li>
+<li><p>数组元素寻址：</p>
+<ul>
+<li><p>一维数组：每个数组元素的宽度时w，则a[i]的相对地址是 $base + iw$</p>
+</li>
+<li><p>k维数组：$base + i_1w_1+ i_2w_2+ … +i_kw_k$ </p>
+<p><img src="/2020/07/10/%E7%BC%96%E8%AF%913/../themes/fluid/source/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605150750828.png" srcset="/img/loading.gif" alt="image-20200605150750828" style="zoom:50%;"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="控制语句的翻译"><a href="#控制语句的翻译" class="headerlink" title="控制语句的翻译"></a>控制语句的翻译</h5><p><img src="/2020/07/10/%E7%BC%96%E8%AF%913/../themes/fluid/source/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605152117330.png" srcset="/img/loading.gif" alt="image-20200605152117330" style="zoom:67%;"></p>
+<p><img src="/2020/07/10/%E7%BC%96%E8%AF%913/../themes/fluid/source/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605152434442.png" srcset="/img/loading.gif" alt="image-20200605152434442" style="zoom: 67%;"></p>
+<p><img src="/2020/07/10/%E7%BC%96%E8%AF%913/../themes/fluid/source/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605152450706.png" srcset="/img/loading.gif" alt="image-20200605152450706" style="zoom:67%;"></p>
+<p><img src="/2020/07/10/%E7%BC%96%E8%AF%913/../themes/fluid/source/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605152525036.png" srcset="/img/loading.gif" alt="image-20200605152525036" style="zoom:67%;"></p>
+<p><strong>布尔表达式的翻译</strong></p>
+<ul>
+<li>在跳转代码中，逻辑运算符&amp;&amp;，||和！被翻译成跳转指令，运算符本身不出现在代码中。布尔表达式的值是通过代码序列中的位置来表示的。</li>
+</ul>
+<h5 id="回填"><a href="#回填" class="headerlink" title="回填"></a>回填</h5><ul>
+<li><p>基本思想</p>
+<ul>
+<li>生成一个跳转指令时，暂时不指定该跳转指令的目标标号。这样的指令都放入由跳转指令组成的列表中。同一个列表的所有跳转指令具有相同的目标标号，确定时进行填充。</li>
+</ul>
+</li>
+<li><p>非终结符的综合属性</p>
+<ul>
+<li>B.truelist<ul>
+<li>指向一个包含跳转指令的列表，这些指令最终获得的目标标号就是B为真时应该转向的标号</li>
+</ul>
+</li>
+<li>B.falselist</li>
+</ul>
+</li>
+<li><p>函数</p>
+<ul>
+<li><p>$makelist(i)$</p>
+<ul>
+<li>创建一个只包含 i 的列表，i 是跳转指令的标号，函数返回指向新创建列表的指针。</li>
+</ul>
+</li>
+<li><p>$merge(p_i,p_2)$</p>
+<ul>
+<li>将两者指向的列表进行合并，返回合并后列表的指针</li>
+</ul>
+</li>
+<li><p>$backpatch(p,i)$</p>
+<ul>
+<li>将i作为目标标号插入到p指向列表的所有指令中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="switch语句的翻译"><a href="#switch语句的翻译" class="headerlink" title="switch语句的翻译"></a>switch语句的翻译</h5><p><img src="/2020/07/10/%E7%BC%96%E8%AF%913/../themes/fluid/source/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605160003367.png" srcset="/img/loading.gif" alt="image-20200605160003367" style="zoom:67%;"></p>
+<p><img src="/2020/07/10/%E7%BC%96%E8%AF%913/../themes/fluid/source/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605160032474.png" srcset="/img/loading.gif" alt="image-20200605160032474" style="zoom: 67%;"></p>
+<h5 id="过程调用语句的翻译"><a href="#过程调用语句的翻译" class="headerlink" title="过程调用语句的翻译"></a>过程调用语句的翻译</h5><p><img src="/2020/07/10/%E7%BC%96%E8%AF%913/../themes/fluid/source/img/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%9F%E6%9C%AB6.assets/image-20200605155723904.png" srcset="/img/loading.gif" alt="image-20200605155723904" style="zoom:67%;"></p>
+<h5 id="语义分析中的错误检测"><a href="#语义分析中的错误检测" class="headerlink" title="语义分析中的错误检测"></a>语义分析中的错误检测</h5><ul>
+<li>变量或者过程未声明就使用</li>
+<li>变量或过程名重复声明</li>
+<li>运算分量类型不匹配 </li>
+<li>操作符与操作数之间的类型不匹配<ul>
+<li>数组下标不是整数</li>
+<li>非数组变量使用数组访问操作符</li>
+<li>非过程名使用过程调用操作符</li>
+<li>过程调用的参数类型或者数目不匹配</li>
+<li>函数返回类型有误</li>
+</ul>
+</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "编译原理期末复习（3）&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
